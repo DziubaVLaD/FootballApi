@@ -14,6 +14,12 @@ public class MainPresenter extends BasePresenter<MainView> {
         this.mainInteractor = mainInteractor;
     }
 
+    public void onStart() {
+        subscribeOnNetworkEvents();
+        mainInteractor.registerNetworkCallback();
+        sendToView(view -> view.showNetworkBanner(mainInteractor.isNetworkConnected()));
+        getBestTeamLast30Days();
+    }
 
     private void subscribeOnNetworkEvents() {
         networkDisposable = mainInteractor.subscribeOnNetworkEvents()
@@ -25,8 +31,30 @@ public class MainPresenter extends BasePresenter<MainView> {
 
     public void getBestTeamLast30Days() {
         addDisposable(mainInteractor.getBestTeamLast30Days()
-        .subscribe(kek ->{
+        .subscribe(allMatchesForParticularCompetition ->{
 
         }));
+    }
+
+    public void getInfoAboutBestTeam() {
+        addDisposable(mainInteractor.getInfoAboutBestTeam()
+                .subscribe(team ->{
+
+                }));
+    }
+
+    public void onOfflineBannerClicked() {
+        sendToView(view -> view.showNetworkSettings());
+    }
+
+    public void onStop() {
+        mainInteractor.unregisterNetworkCallback();
+        unsubscribeFromNetworkEvents();
+    }
+
+    private void unsubscribeFromNetworkEvents() {
+        if (networkDisposable != null) {
+            removeDisposable(networkDisposable);
+        }
     }
 }

@@ -8,7 +8,13 @@ import io.reactivex.Flowable;
 import io.reactivex.Single;
 
 public interface DataManager extends RestService {
-    Single<AllMatchesForParticularCompetitionResponse> getAllMatchesForParticularCompetition(String token, String dateFrom, String dateTo);
+    boolean isNetworkConnected();
+
+    Single<AllMatchesForParticularCompetitionResponse> getAllMatchesForParticularCompetition(String token,String id, String dateFrom, String dateTo);
 
     Flowable<NetworkEvent> subscribeOnNetworkEvents();
+
+    void registerNetworkCallback();
+
+    void unregisterNetworkCallback();
 }

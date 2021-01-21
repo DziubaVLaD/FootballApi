@@ -22,6 +22,8 @@ public class App extends Application {
     public void onCreate() {
         super.onCreate();
 
+        instance = this;
+
         RxJavaPlugins.setErrorHandler(e -> {
             if (e instanceof UndeliverableException) {
                 e = e.getCause();

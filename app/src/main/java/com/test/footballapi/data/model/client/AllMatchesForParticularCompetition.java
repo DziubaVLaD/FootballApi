@@ -1,27 +1,24 @@
 package com.test.footballapi.data.model.client;
 
-import com.test.footballapi.data.model.CompetitionResponse;
-import com.test.footballapi.data.model.MatchesResponse;
-
 import java.util.List;
 
 public class AllMatchesForParticularCompetition {
-    private CompetitionResponse competition;
-    private List<MatchesResponse> matches;
+    private Competition competition;
+    private List<Matches> matches;
 
-    public CompetitionResponse getCompetition() {
+    public Competition getCompetition() {
         return competition;
     }
 
-    public void setCompetition(CompetitionResponse competition) {
+    public void setCompetition(Competition competition) {
         this.competition = competition;
     }
 
-    public List<MatchesResponse> getMatches() {
+    public List<Matches> getMatches() {
         return matches;
     }
 
-    public void setMatches(List<MatchesResponse> matches) {
+    public void setMatches(List<Matches> matches) {
         this.matches = matches;
     }
 }

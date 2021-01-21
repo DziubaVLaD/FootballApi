@@ -4,4 +4,6 @@ import com.test.footballapi.presentation.base.MvpView;
 
 public interface MainView extends MvpView {
     void showNetworkBanner(boolean connected);
+
+    void showNetworkSettings();
 }

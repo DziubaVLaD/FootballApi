@@ -1,6 +1,8 @@
 package com.test.footballapi.presentation.mvp.ui.main;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.View;
 
 import com.test.footballapi.App;
@@ -10,7 +12,7 @@ import com.test.footballapi.presentation.base.BaseMvpActivity;
 import com.test.footballapi.presentation.mvp.presenter.main.MainPresenter;
 import com.test.footballapi.presentation.mvp.presenter.main.MainView;
 
-public class MainActivity extends BaseMvpActivity<MainPresenter> implements MainView {
+public class MainActivity extends BaseMvpActivity<MainPresenter> implements MainView, View.OnClickListener {
 
     private View offlineBanner;
 
@@ -19,7 +21,8 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         offlineBanner = findViewById(R.id.view_offline_banner);
-        presenter.getBestTeamLast30Days();
+        presenter.onStart();
+        offlineBanner.setOnClickListener(this);
     }
 
     @Override
@@ -32,7 +35,24 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
         offlineBanner.setVisibility(connected ? View.GONE : View.VISIBLE);
     }
 
-    public PresenterFactory getPresenterFactory() {
-        return PresenterFactory.getInstance(App.getInstance().getDataManager());
+    @Override
+    public void showNetworkSettings() {
+        Intent intent = new Intent(Settings.ACTION_WIRELESS_SETTINGS);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.view_offline_banner:
+                presenter.onOfflineBannerClicked();
+                break;
+        }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        presenter.onStop();
     }
 }

@@ -16,11 +16,8 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.jackson.JacksonConverterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
 
-/**
- * Created by Olga Liakhovich on 2/7/2019.
- */
 public class ApiConfig {
-    public static final String ENDPOINT = "https://www.football-data.org/";
+    public static final String ENDPOINT = "http://api.football-data.org/v2/";
     private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
     private static final long DEFAULT_CONNECT_TIMEOUT = 10000;
     private static final long DEFAULT_WRITE_TIMEOUT = 10000;

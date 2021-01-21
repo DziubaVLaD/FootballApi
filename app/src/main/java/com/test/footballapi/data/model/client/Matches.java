@@ -1,22 +1,17 @@
 package com.test.footballapi.data.model.client;
 
-import com.test.footballapi.data.model.AwayTeamResponse;
-import com.test.footballapi.data.model.HomeTeamResponse;
-import com.test.footballapi.data.model.ScoreResponse;
-import com.test.footballapi.data.model.SeasonResponse;
-
 public class Matches {
-    private SeasonResponse season;
+    private Season season;
     private String utcDate;
-    private ScoreResponse score;
-    private HomeTeamResponse homeTeam;
-    private AwayTeamResponse awayTeam;
+    private Score score;
+    private HomeTeam homeTeam;
+    private AwayTeam awayTeam;
 
-    public SeasonResponse getSeason() {
+    public Season getSeason() {
         return season;
     }
 
-    public void setSeason(SeasonResponse season) {
+    public void setSeason(Season season) {
         this.season = season;
     }
 
@@ -28,27 +23,27 @@ public class Matches {
         this.utcDate = utcDate;
     }
 
-    public ScoreResponse getScore() {
+    public Score getScore() {
         return score;
     }
 
-    public void setScore(ScoreResponse score) {
+    public void setScore(Score score) {
         this.score = score;
     }
 
-    public HomeTeamResponse getHomeTeam() {
+    public HomeTeam getHomeTeam() {
         return homeTeam;
     }
 
-    public void setHomeTeam(HomeTeamResponse homeTeam) {
+    public void setHomeTeam(HomeTeam homeTeam) {
         this.homeTeam = homeTeam;
     }
 
-    public AwayTeamResponse getAwayTeam() {
+    public AwayTeam getAwayTeam() {
         return awayTeam;
     }
 
-    public void setAwayTeam(AwayTeamResponse awayTeam) {
+    public void setAwayTeam(AwayTeam awayTeam) {
         this.awayTeam = awayTeam;
     }
 }

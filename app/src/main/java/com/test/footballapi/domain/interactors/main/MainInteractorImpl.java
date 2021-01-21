@@ -27,6 +27,6 @@ public class MainInteractorImpl implements MainInteractor {
     public Single<AllMatchesForParticularCompetition> getBestTeamLast30Days() {
         return mainRepository.getBestTeamLast30Days()
                 .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread());;
+                .observeOn(AndroidSchedulers.mainThread());
     }
 }

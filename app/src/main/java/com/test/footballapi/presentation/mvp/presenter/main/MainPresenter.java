@@ -24,6 +24,9 @@ public class MainPresenter extends BasePresenter<MainView> {
     }
 
     public void getBestTeamLast30Days() {
-        addDisposable(mainInteractor.getBestTeamLast30Days());
+        addDisposable(mainInteractor.getBestTeamLast30Days()
+        .subscribe(kek ->{
+
+        }));
     }
 }

@@ -27,7 +27,7 @@ public class MainRepositoryImpl implements MainRepository {
 
     @Override
     public Single<AllMatchesForParticularCompetition> getBestTeamLast30Days() {
-        return dataManager.getAllMatchesForParticularCompetition(AppConstants.X_AUTH_TOKEN,"20.20","20.20.20")
+        return dataManager.getAllMatchesForParticularCompetition(AppConstants.X_AUTH_TOKEN,"2020.01.01","2020.01.20")
                 .map(allMatchesResponse ->allMatchesForParticularCompetitionMapper.transform(allMatchesResponse));
     }
 }

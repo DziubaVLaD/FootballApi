@@ -2,6 +2,7 @@ package com.test.footballapi.domain.interactors.main;
 
 import com.test.footballapi.data.model.client.AllMatchesForParticularCompetition;
 import com.test.footballapi.data.model.NetworkEvent;
+import com.test.footballapi.data.model.client.CompetitionInfo;
 import com.test.footballapi.data.model.client.Team;
 
 import io.reactivex.Flowable;
@@ -12,9 +13,11 @@ public interface MainInteractor {
 
     Flowable<NetworkEvent> subscribeOnNetworkEvents();
 
-    Single<AllMatchesForParticularCompetition> getBestTeamLast30Days();
+    Single<AllMatchesForParticularCompetition> getBestTeam();
 
     Single<Team> getInfoAboutBestTeam();
+
+    Single<CompetitionInfo> getInfoAboutCompetition();
 
     void registerNetworkCallback();
 

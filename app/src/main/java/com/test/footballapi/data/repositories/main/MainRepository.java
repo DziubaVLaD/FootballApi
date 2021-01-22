@@ -2,6 +2,7 @@ package com.test.footballapi.data.repositories.main;
 
 import com.test.footballapi.data.model.NetworkEvent;
 import com.test.footballapi.data.model.client.AllMatchesForParticularCompetition;
+import com.test.footballapi.data.model.client.CompetitionInfo;
 import com.test.footballapi.data.model.client.Team;
 
 import io.reactivex.Flowable;
@@ -15,6 +16,8 @@ public interface MainRepository  {
     Single<AllMatchesForParticularCompetition> getBestTeamLast30Days();
 
     Single<Team> getInfoAboutBestTeam();
+
+    Single<CompetitionInfo> getInfoAboutCompetition();
 
     void registerNetworkCallback();
 

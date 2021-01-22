@@ -2,6 +2,7 @@ package com.test.footballapi.domain.interactors.main;
 
 import com.test.footballapi.data.model.NetworkEvent;
 import com.test.footballapi.data.model.client.AllMatchesForParticularCompetition;
+import com.test.footballapi.data.model.client.CompetitionInfo;
 import com.test.footballapi.data.model.client.Team;
 import com.test.footballapi.data.repositories.main.MainRepository;
 
@@ -12,6 +13,7 @@ import io.reactivex.schedulers.Schedulers;
 
 public class MainInteractorImpl implements MainInteractor {
     private MainRepository mainRepository;
+    private String leagueName;
 
     public MainInteractorImpl(MainRepository mainRepository) {
         this.mainRepository = mainRepository;
@@ -30,7 +32,7 @@ public class MainInteractorImpl implements MainInteractor {
     }
 
     @Override
-    public Single<AllMatchesForParticularCompetition> getBestTeamLast30Days() {
+    public Single<AllMatchesForParticularCompetition> getBestTeam() {
         return mainRepository.getBestTeamLast30Days()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
@@ -39,6 +41,13 @@ public class MainInteractorImpl implements MainInteractor {
     @Override
     public Single<Team> getInfoAboutBestTeam() {
         return mainRepository.getInfoAboutBestTeam()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
+    }
+
+    @Override
+    public Single<CompetitionInfo> getInfoAboutCompetition() {
+        return mainRepository.getInfoAboutCompetition()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
     }

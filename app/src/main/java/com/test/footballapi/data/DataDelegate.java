@@ -1,6 +1,7 @@
 package com.test.footballapi.data;
 
 import com.test.footballapi.data.model.AllMatchesForParticularCompetitionResponse;
+import com.test.footballapi.data.model.CompetitionInfoResponse;
 import com.test.footballapi.data.model.NetworkEvent;
 import com.test.footballapi.data.model.TeamResponse;
 import com.test.footballapi.data.network.NetworkManager;
@@ -34,6 +35,11 @@ public class DataDelegate implements DataManager {
     @Override
     public Single<TeamResponse> getInfoAboutBestTeam(String token, String id) {
         return restService.getInfoAboutBestTeam(token, id);
+    }
+
+    @Override
+    public Single<CompetitionInfoResponse> getInfoAboutCompetition(String token, String id) {
+        return restService.getInfoAboutCompetition(token, id);
     }
 
     @Override

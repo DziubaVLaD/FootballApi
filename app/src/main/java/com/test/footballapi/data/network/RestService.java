@@ -1,6 +1,8 @@
 package com.test.footballapi.data.network;
 
 import com.test.footballapi.data.model.AllMatchesForParticularCompetitionResponse;
+import com.test.footballapi.data.model.CompetitionInfoResponse;
+import com.test.footballapi.data.model.CompetitionResponse;
 import com.test.footballapi.data.model.TeamResponse;
 
 import io.reactivex.Single;
@@ -17,4 +19,9 @@ public interface RestService {
     @GET("teams/{id}")
     Single<TeamResponse> getInfoAboutBestTeam(
             @Header("X-Auth-Token") String token, @Path("id") String id);
+
+    @GET("competitions/{id}")
+    Single<CompetitionInfoResponse> getInfoAboutCompetition(
+            @Header("X-Auth-Token") String token, @Path("id") String id);
+
 }

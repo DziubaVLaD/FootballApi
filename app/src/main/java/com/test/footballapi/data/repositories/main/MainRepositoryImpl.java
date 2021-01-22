@@ -1,9 +1,12 @@
 package com.test.footballapi.data.repositories.main;
 
 import com.test.footballapi.data.DataManager;
+import com.test.footballapi.data.model.CompetitionInfoResponse;
 import com.test.footballapi.data.model.NetworkEvent;
 import com.test.footballapi.data.model.client.AllMatchesForParticularCompetition;
+import com.test.footballapi.data.model.client.CompetitionInfo;
 import com.test.footballapi.data.model.client.Team;
+import com.test.footballapi.data.model.mapper.AboutCompetitionMapper;
 import com.test.footballapi.data.model.mapper.AllMatchesForParticularCompetitionMapper;
 import com.test.footballapi.data.model.mapper.BestTeamMapper;
 import com.test.footballapi.utils.AppConstants;
@@ -15,12 +18,14 @@ public class MainRepositoryImpl implements MainRepository {
     private DataManager dataManager;
     private AllMatchesForParticularCompetitionMapper allMatchesForParticularCompetitionMapper;
     private BestTeamMapper bestTeamMapper;
+    private AboutCompetitionMapper aboutCompetitionMapper;
 
 
     public MainRepositoryImpl(DataManager dataManager) {
         this.dataManager = dataManager;
         allMatchesForParticularCompetitionMapper = new AllMatchesForParticularCompetitionMapper();
-
+        bestTeamMapper = new BestTeamMapper();
+        aboutCompetitionMapper = new AboutCompetitionMapper();
     }
 
     @Override
@@ -43,6 +48,12 @@ public class MainRepositoryImpl implements MainRepository {
     public Single<Team> getInfoAboutBestTeam() {
         return dataManager.getInfoAboutBestTeam(AppConstants.X_AUTH_TOKEN, "18")
                 .map(teamResponse -> bestTeamMapper.transform(teamResponse));
+    }
+
+    @Override
+    public Single<CompetitionInfo> getInfoAboutCompetition() {
+        return dataManager.getInfoAboutCompetition(AppConstants.X_AUTH_TOKEN, AppConstants.ID_BUNDESLIGA)
+                .map(competitionInfoResponse -> aboutCompetitionMapper.transform(competitionInfoResponse));
     }
 
     @Override

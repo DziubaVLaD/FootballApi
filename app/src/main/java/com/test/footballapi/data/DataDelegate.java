@@ -28,6 +28,11 @@ public class DataDelegate implements DataManager {
     }
 
     @Override
+    public Single<CompetitionInfoResponse> getInfoAboutCompetition(String token, String id) {
+        return restService.getInfoAboutCompetition(token, id);
+    }
+
+    @Override
     public Single<AllMatchesForParticularCompetitionResponse> getAllMatchesForParticularCompetition(String token, String id, String dateFrom, String dateTo) {
         return restService.getAllMatchesForParticularCompetition(token, id, dateFrom, dateTo);
     }
@@ -35,11 +40,6 @@ public class DataDelegate implements DataManager {
     @Override
     public Single<TeamResponse> getInfoAboutBestTeam(String token, String id) {
         return restService.getInfoAboutBestTeam(token, id);
-    }
-
-    @Override
-    public Single<CompetitionInfoResponse> getInfoAboutCompetition(String token, String id) {
-        return restService.getInfoAboutCompetition(token, id);
     }
 
     @Override

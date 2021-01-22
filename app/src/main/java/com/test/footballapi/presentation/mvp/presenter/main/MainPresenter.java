@@ -31,24 +31,45 @@ public class MainPresenter extends BasePresenter<MainView> {
 
     public void getBestTeam() {
         addDisposable(mainInteractor.getBestTeam()
-        .subscribe(allMatchesForParticularCompetition ->{
-
-        }));
+                .doOnSubscribe(it -> sendToView(view -> view.showProgress()))
+                .doOnSuccess(allMatchesForParticularCompetition -> {
+                })
+                .subscribe(allMatchesForParticularCompetition -> {
+                    getInfoAboutBestTeam();
+                    sendToView(view -> view.hideProgress());
+                }, e -> {
+                    sendToView(view -> view.showError(e.getMessage()));
+                    sendToView(view -> view.hideProgress());
+                }));
     }
 
     public void getInfoAboutBestTeam() {
         addDisposable(mainInteractor.getInfoAboutBestTeam()
-                .subscribe(team ->{
-
+                .doOnSubscribe(it -> sendToView(view -> view.showProgress()))
+                .subscribe(team -> {
+                    sendToView(view -> view.showInfoAboutBestTeam(team.getName(), team.getFounded(), team.getVenue(), team.getWebsite()));
+                    sendToView(view -> view.showCrestUrl(team.getCrestUrl()));
+                    sendToView(view -> view.hideProgress());
+                }, e -> {
+                    sendToView(view -> view.showError(e.getMessage()));
+                    sendToView(view -> view.hideProgress());
                 }));
     }
 
     public void getInfoAboutCompetition() {
         addDisposable(mainInteractor.getInfoAboutCompetition()
-                .doOnSuccess(kek->{})
-                .subscribe(team ->{
-
-                }));
+                .doOnSubscribe(it -> sendToView(view -> view.showProgress()))
+                .doOnSuccess(competitionInfo -> {
+                    getBestTeam();
+                })
+                .subscribe(competitionInfo -> {
+                    sendToView(view -> view.showCompetitionName(competitionInfo.getName()));
+                    sendToView(view -> view.hideProgress());
+                }, e -> {
+                    sendToView(view -> view.showError(e.getMessage()));
+                    sendToView(view -> view.hideProgress());
+                }))
+        ;
     }
 
     public void onOfflineBannerClicked() {

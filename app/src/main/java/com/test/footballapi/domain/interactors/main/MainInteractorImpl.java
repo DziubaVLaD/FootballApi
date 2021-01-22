@@ -13,7 +13,9 @@ import io.reactivex.schedulers.Schedulers;
 
 public class MainInteractorImpl implements MainInteractor {
     private MainRepository mainRepository;
-    private String leagueName;
+    private String startDateCompetition;
+    private String endDateCompetition;
+    private String idCompetition;
 
     public MainInteractorImpl(MainRepository mainRepository) {
         this.mainRepository = mainRepository;
@@ -32,8 +34,26 @@ public class MainInteractorImpl implements MainInteractor {
     }
 
     @Override
+    public Single<CompetitionInfo> getInfoAboutCompetition() {
+        return mainRepository.getInfoAboutCompetition()
+                .map(competitionInfo -> {
+                    startDateCompetition = competitionInfo.getSeasons().get(0).getEndDate();
+                    endDateCompetition = competitionInfo.getSeasons().get(0).getStartDate();
+                    //TODO Check id with int
+                    idCompetition = String.valueOf(competitionInfo.getId());
+                    return competitionInfo;
+                })
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
+    }
+
+    @Override
     public Single<AllMatchesForParticularCompetition> getBestTeam() {
-        return mainRepository.getBestTeamLast30Days()
+        return mainRepository.getBestTeamLast30Days(startDateCompetition, endDateCompetition, idCompetition)
+                .map(allMatchesForParticularCompetition -> {
+                    //TODO getIdBestCommand
+                    return allMatchesForParticularCompetition;
+                })
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
     }
@@ -41,13 +61,6 @@ public class MainInteractorImpl implements MainInteractor {
     @Override
     public Single<Team> getInfoAboutBestTeam() {
         return mainRepository.getInfoAboutBestTeam()
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread());
-    }
-
-    @Override
-    public Single<CompetitionInfo> getInfoAboutCompetition() {
-        return mainRepository.getInfoAboutCompetition()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
     }

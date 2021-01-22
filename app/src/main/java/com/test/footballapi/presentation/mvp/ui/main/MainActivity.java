@@ -4,9 +4,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
-import com.test.footballapi.App;
-import com.test.footballapi.PresenterFactory;
+import com.bumptech.glide.Glide;
 import com.test.footballapi.R;
 import com.test.footballapi.presentation.base.BaseMvpActivity;
 import com.test.footballapi.presentation.mvp.presenter.main.MainPresenter;
@@ -15,12 +17,26 @@ import com.test.footballapi.presentation.mvp.presenter.main.MainView;
 public class MainActivity extends BaseMvpActivity<MainPresenter> implements MainView, View.OnClickListener {
 
     private View offlineBanner;
+    private TextView tvCompetitionName;
+    private TextView tvBestTeam;
+    private ImageView ivBestTeamPLogo;
+    private TextView tvFounded;
+    private TextView tvVenue;
+    private TextView tvWebsite;
+    private View progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         offlineBanner = findViewById(R.id.view_offline_banner);
+        tvCompetitionName = findViewById(R.id.tvCompetitionName);
+        tvBestTeam = findViewById(R.id.tvBestTeam);
+        ivBestTeamPLogo = findViewById(R.id.tvCrestUrl);
+        tvFounded = findViewById(R.id.tvFounded);
+        tvVenue = findViewById(R.id.tvVenue);
+        tvWebsite = findViewById(R.id.tvWebsite);
+        progressBar = findViewById(R.id.progress_bar);
         presenter.onStart();
         offlineBanner.setOnClickListener(this);
     }
@@ -39,6 +55,43 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
     public void showNetworkSettings() {
         Intent intent = new Intent(Settings.ACTION_WIRELESS_SETTINGS);
         startActivity(intent);
+    }
+
+    @Override
+    public void showCompetitionName(String name) {
+        tvCompetitionName.setText(name);
+    }
+
+    @Override
+    public void showProgress() {
+        progressBar.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void hideProgress() {
+        progressBar.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void showError(String message) {
+        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void showInfoAboutBestTeam(String name, int founded, String venue, String website) {
+        tvCompetitionName.setText(name);
+        tvBestTeam.setText(name);
+        tvFounded.setText(founded);
+        tvVenue.setText(venue);
+        tvWebsite.setText(website);
+        tvCompetitionName.setText(name);
+    }
+
+    @Override
+    public void showCrestUrl(String crestUrl) {
+        Glide.with(this)
+                .load(crestUrl)
+                .into(ivBestTeamPLogo);
     }
 
     @Override

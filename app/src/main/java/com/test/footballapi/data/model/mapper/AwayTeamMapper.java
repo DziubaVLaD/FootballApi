@@ -8,6 +8,6 @@ public class AwayTeamMapper {
         AwayTeam awayTeam = new AwayTeam();
         awayTeam.setId(awayTeamResponse.getId());
         awayTeam.setName(awayTeamResponse.getName());
-        return null;
+        return awayTeam;
     }
 }

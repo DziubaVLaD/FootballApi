@@ -8,12 +8,12 @@ import com.test.footballapi.data.model.client.Team;
 import io.reactivex.Flowable;
 import io.reactivex.Single;
 
-public interface MainRepository  {
+public interface MainRepository {
     boolean isNetworkConnected();
 
     Flowable<NetworkEvent> subscribeOnNetworkEvents();
 
-    Single<AllMatchesForParticularCompetition> getBestTeamLast30Days();
+    Single<AllMatchesForParticularCompetition> getBestTeamLast30Days(String startDateCompetition, String endDateCompetition, String idCompetition);
 
     Single<Team> getInfoAboutBestTeam();
 

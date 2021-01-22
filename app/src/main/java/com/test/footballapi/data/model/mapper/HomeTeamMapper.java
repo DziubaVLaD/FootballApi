@@ -8,6 +8,6 @@ public class HomeTeamMapper {
         HomeTeam homeTeam = new HomeTeam();
         homeTeam.setId(homeTeamResponse.getId());
         homeTeam.setName(homeTeamResponse.getName());
-        return null;
+        return homeTeam;
     }
 }

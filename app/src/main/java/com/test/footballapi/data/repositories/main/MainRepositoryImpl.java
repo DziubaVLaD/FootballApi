@@ -39,8 +39,14 @@ public class MainRepositoryImpl implements MainRepository {
     }
 
     @Override
-    public Single<AllMatchesForParticularCompetition> getBestTeamLast30Days() {
-        return dataManager.getAllMatchesForParticularCompetition(AppConstants.X_AUTH_TOKEN, "2001", "2020-05-01", "2020-12-01")
+    public Single<CompetitionInfo> getInfoAboutCompetition() {
+        return dataManager.getInfoAboutCompetition(AppConstants.X_AUTH_TOKEN, AppConstants.ID_BUNDESLIGA)
+                .map(competitionInfoResponse -> aboutCompetitionMapper.transform(competitionInfoResponse));
+    }
+
+    @Override
+    public Single<AllMatchesForParticularCompetition> getBestTeamLast30Days(String startDateCompetition, String endDateCompetition, String idCompetition) {
+        return dataManager.getAllMatchesForParticularCompetition(AppConstants.X_AUTH_TOKEN, idCompetition, "2021-01-01", "2021-01-23")
                 .map(allMatchesResponse -> allMatchesForParticularCompetitionMapper.transform(allMatchesResponse));
     }
 
@@ -48,12 +54,6 @@ public class MainRepositoryImpl implements MainRepository {
     public Single<Team> getInfoAboutBestTeam() {
         return dataManager.getInfoAboutBestTeam(AppConstants.X_AUTH_TOKEN, "18")
                 .map(teamResponse -> bestTeamMapper.transform(teamResponse));
-    }
-
-    @Override
-    public Single<CompetitionInfo> getInfoAboutCompetition() {
-        return dataManager.getInfoAboutCompetition(AppConstants.X_AUTH_TOKEN, AppConstants.ID_BUNDESLIGA)
-                .map(competitionInfoResponse -> aboutCompetitionMapper.transform(competitionInfoResponse));
     }
 
     @Override

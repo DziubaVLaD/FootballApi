@@ -1,19 +1,10 @@
 package com.test.footballapi.data.model.client;
 
 public class Matches {
-    private Season season;
     private String utcDate;
     private Score score;
     private HomeTeam homeTeam;
     private AwayTeam awayTeam;
-
-    public Season getSeason() {
-        return season;
-    }
-
-    public void setSeason(Season season) {
-        this.season = season;
-    }
 
     public String getUtcDate() {
         return utcDate;

@@ -3,8 +3,6 @@ package com.test.footballapi.data.model;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class MatchesResponse {
-    @JsonProperty("season")
-    private SeasonResponse season;
     @JsonProperty("utcDate")
     private String utcDate;
     @JsonProperty("score")
@@ -13,14 +11,6 @@ public class MatchesResponse {
     private HomeTeamResponse homeTeam;
     @JsonProperty("awayTeam")
     private AwayTeamResponse awayTeam;
-
-    public SeasonResponse getSeason() {
-        return season;
-    }
-
-    public void setSeason(SeasonResponse season) {
-        this.season = season;
-    }
 
     public String getUtcDate() {
         return utcDate;

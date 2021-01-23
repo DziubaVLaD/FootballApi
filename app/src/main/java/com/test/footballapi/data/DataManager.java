@@ -10,7 +10,7 @@ import io.reactivex.Single;
 public interface DataManager extends RestService {
     boolean isNetworkConnected();
 
-    Single<AllMatchesForParticularCompetitionResponse> getAllMatchesForParticularCompetition(String token,String id, String dateFrom, String dateTo);
+    Single<AllMatchesForParticularCompetitionResponse> getAllMatchesForParticularCompetition(String token,int id, String dateFrom, String dateTo);
 
     Flowable<NetworkEvent> subscribeOnNetworkEvents();
 

@@ -1,6 +1,7 @@
 package com.test.footballapi.presentation.mvp.ui.main;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.view.View;
@@ -9,6 +10,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.github.twocoffeesoneteam.glidetovectoryou.GlideToVectorYou;
+import com.github.twocoffeesoneteam.glidetovectoryou.GlideToVectorYouListener;
 import com.test.footballapi.R;
 import com.test.footballapi.presentation.base.BaseMvpActivity;
 import com.test.footballapi.presentation.mvp.presenter.main.MainPresenter;
@@ -79,19 +82,16 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
 
     @Override
     public void showInfoAboutBestTeam(String name, int founded, String venue, String website) {
-        tvCompetitionName.setText(name);
         tvBestTeam.setText(name);
-        tvFounded.setText(founded);
+        tvFounded.setText(String.valueOf(founded));
         tvVenue.setText(venue);
         tvWebsite.setText(website);
-        tvCompetitionName.setText(name);
     }
 
     @Override
     public void showCrestUrl(String crestUrl) {
-        Glide.with(this)
-                .load(crestUrl)
-                .into(ivBestTeamPLogo);
+        GlideToVectorYou.justLoadImageAsBackground(this, Uri.parse(crestUrl), ivBestTeamPLogo);
+
     }
 
     @Override

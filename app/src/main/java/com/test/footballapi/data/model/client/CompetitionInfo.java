@@ -1,7 +1,5 @@
 package com.test.footballapi.data.model.client;
 
-import com.test.footballapi.data.model.SeasonsResponse;
-
 import java.util.List;
 
 public class CompetitionInfo {

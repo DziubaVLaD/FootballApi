@@ -33,12 +33,12 @@ public class DataDelegate implements DataManager {
     }
 
     @Override
-    public Single<AllMatchesForParticularCompetitionResponse> getAllMatchesForParticularCompetition(String token, String id, String dateFrom, String dateTo) {
+    public Single<AllMatchesForParticularCompetitionResponse> getAllMatchesForParticularCompetition(String token, int id, String dateFrom, String dateTo) {
         return restService.getAllMatchesForParticularCompetition(token, id, dateFrom, dateTo);
     }
 
     @Override
-    public Single<TeamResponse> getInfoAboutBestTeam(String token, String id) {
+    public Single<TeamResponse> getInfoAboutBestTeam(String token, int id) {
         return restService.getInfoAboutBestTeam(token, id);
     }
 

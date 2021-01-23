@@ -5,6 +5,8 @@ import com.test.footballapi.data.model.client.AllMatchesForParticularCompetition
 import com.test.footballapi.data.model.client.CompetitionInfo;
 import com.test.footballapi.data.model.client.Team;
 
+import java.util.List;
+
 import io.reactivex.Flowable;
 import io.reactivex.Single;
 
@@ -13,9 +15,9 @@ public interface MainRepository {
 
     Flowable<NetworkEvent> subscribeOnNetworkEvents();
 
-    Single<AllMatchesForParticularCompetition> getBestTeamLast30Days(String startDateCompetition, String endDateCompetition, String idCompetition);
+    Single<AllMatchesForParticularCompetition> getBestTeamLast30Days(String startDateCompetition, String endDateCompetition, int idCompetition);
 
-    Single<Team> getInfoAboutBestTeam();
+    Single<Team> getInfoAboutBestTeam(List<Integer> idBestTeamsList);
 
     Single<CompetitionInfo> getInfoAboutCompetition();
 

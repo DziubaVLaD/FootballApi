@@ -3,8 +3,8 @@ package com.test.footballapi.data.model.client;
 public class Matches {
     private String utcDate;
     private Score score;
-    private HomeTeam homeTeam;
-    private AwayTeam awayTeam;
+    private WinnerTeam homeTeam;
+    private WinnerTeam awayTeam;
 
     public String getUtcDate() {
         return utcDate;
@@ -22,19 +22,19 @@ public class Matches {
         this.score = score;
     }
 
-    public HomeTeam getHomeTeam() {
+    public WinnerTeam getWinnerHomeTeam() {
         return homeTeam;
     }
 
-    public void setHomeTeam(HomeTeam homeTeam) {
-        this.homeTeam = homeTeam;
+    public void setWinnerHomeTeam(WinnerTeam winnerTeam) {
+        this.homeTeam = winnerTeam;
     }
 
-    public AwayTeam getAwayTeam() {
+    public WinnerTeam getWinnerAwayTeam() {
         return awayTeam;
     }
 
-    public void setAwayTeam(AwayTeam awayTeam) {
+    public void setWinneAwayTeam(WinnerTeam awayTeam) {
         this.awayTeam = awayTeam;
     }
 }

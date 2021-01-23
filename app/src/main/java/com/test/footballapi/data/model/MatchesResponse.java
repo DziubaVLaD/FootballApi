@@ -8,9 +8,9 @@ public class MatchesResponse {
     @JsonProperty("score")
     private ScoreResponse score;
     @JsonProperty("homeTeam")
-    private HomeTeamResponse homeTeam;
+    private WinnerTeamResponse homeTeam;
     @JsonProperty("awayTeam")
-    private AwayTeamResponse awayTeam;
+    private WinnerTeamResponse awayTeam;
 
     public String getUtcDate() {
         return utcDate;
@@ -28,19 +28,19 @@ public class MatchesResponse {
         this.score = score;
     }
 
-    public HomeTeamResponse getHomeTeam() {
+    public WinnerTeamResponse getHomeTeam() {
         return homeTeam;
     }
 
-    public void setHomeTeam(HomeTeamResponse homeTeam) {
+    public void setHomeTeam(WinnerTeamResponse homeTeam) {
         this.homeTeam = homeTeam;
     }
 
-    public AwayTeamResponse getAwayTeam() {
+    public WinnerTeamResponse getAwayTeam() {
         return awayTeam;
     }
 
-    public void setAwayTeam(AwayTeamResponse awayTeam) {
+    public void setAwayTeam(WinnerTeamResponse awayTeam) {
         this.awayTeam = awayTeam;
     }
 }

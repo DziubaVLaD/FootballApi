@@ -1,7 +1,11 @@
-package com.test.footballapi.data.model.client;
+package com.test.footballapi.data.model;
 
-public class HomeTeam {
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+public class WinnerTeamResponse {
+    @JsonProperty("id")
     private int id;
+    @JsonProperty("name")
     private String name;
 
     public int getId() {

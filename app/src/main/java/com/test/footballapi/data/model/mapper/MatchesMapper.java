@@ -11,43 +11,65 @@ import java.util.List;
 import java.util.Map;
 
 public class MatchesMapper {
-    AwayTeamMapper awayTeamMapper = new AwayTeamMapper();
-    HomeTeamMapper homeTeamMapper = new HomeTeamMapper();
+    WinnerTeamMapper winnerTeamMapper = new WinnerTeamMapper();
     ScoreMapper scoreMapper = new ScoreMapper();
+    Map<Integer, Integer> teamsHashMap = new HashMap<>();
+    private static final String AWAY_TEAM = "AWAY_TEAM";
+    private static final String HOME_TEAM = "HOME_TEAM";
 
     public List<Matches> transform(List<MatchesResponse> matchesResponseList) {
         List<Matches> matchesList = new ArrayList<>();
         for (MatchesResponse matchesResponse : matchesResponseList) {
             matchesList.add(transform(matchesResponse));
         }
+        bestTeamList();
         return matchesList;
     }
-
     private Matches transform(MatchesResponse matchesResponse) {
         Matches matches = new Matches();
-        matches.setAwayTeam(awayTeamMapper.transform(matchesResponse.getAwayTeam()));
-        matches.setHomeTeam(homeTeamMapper.transform(matchesResponse.getHomeTeam()));
+        matches.setWinneAwayTeam(winnerTeamMapper.transform(matchesResponse.getAwayTeam()));
+        matches.setWinnerHomeTeam(winnerTeamMapper.transform(matchesResponse.getHomeTeam()));
         matches.setScore(scoreMapper.transform(matchesResponse.getScore()));
         matches.setUtcDate(matchesResponse.getUtcDate());
-        calculateBestTeam(matches);
+        checkWinnerTeam(matches);
         return matches;
     }
 
-    private Matches calculateBestTeam(Matches matches) {
-        Map<Integer, Integer> teamsHashMap = new HashMap<>();
-        int winForAwayTeam = 0;
-        int winForHomeTeam = 0;
-        if (matches.getScore().getWinner().equals("HOME_TEAM")) {
-            winForAwayTeam = 1;
-        } else if (matches.getScore().getWinner().equals("AWAY_TEAM")) {
-            winForHomeTeam = 1;
+    private Matches checkWinnerTeam(Matches matches) {
+        if (matches.getScore().getWinner() != null) {
+            if (matches.getScore().getWinner().equals(HOME_TEAM)) {
+                addWinnerTeam(matches.getWinnerHomeTeam().getId());
+            } else if (matches.getScore().getWinner().equals(AWAY_TEAM)) {
+                addWinnerTeam(matches.getWinnerAwayTeam().getId());
+            }
         }
-        int valueAwayTeam = teamsHashMap.get(matches.getAwayTeam());
-        int valueHomeTeam = teamsHashMap.get(matches.getHomeTeam());
-
-        teamsHashMap.put(matches.getAwayTeam().getId(), valueAwayTeam + winForAwayTeam);
-        teamsHashMap.put(matches.getHomeTeam().getId(), valueHomeTeam + winForHomeTeam);
-        Log.i("HASHMAP " , "HASHMAP " + teamsHashMap);
         return matches;
+    }
+
+    private void addWinnerTeam(int idTeam){
+        if (teamsHashMap.containsKey(idTeam)) {
+            teamsHashMap.put(idTeam, teamsHashMap.get(idTeam) + 1);
+        } else {
+            teamsHashMap.put(idTeam, 1);
+        }
+        Log.i("HASHMAP", "HASHMAP " + teamsHashMap);
+    }
+
+    private List<Integer> bestTeamList(){
+        int bestCountWinner = 0;
+        ArrayList idBestTeamsList = new ArrayList();
+        for (int key : teamsHashMap.keySet()) {
+            int value = teamsHashMap.get(key);
+            if (value == bestCountWinner){
+                idBestTeamsList.add(key);
+
+            } else if (value > bestCountWinner){
+                bestCountWinner = value;
+                idBestTeamsList.clear();
+                idBestTeamsList.add(key);
+            }
+        }
+        Log.i("List", "idBestTeamsList " + idBestTeamsList);
+        return idBestTeamsList;
     }
 }

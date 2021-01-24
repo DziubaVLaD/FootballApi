@@ -47,8 +47,8 @@ public class MainPresenter extends BasePresenter<MainView> {
         addDisposable(mainInteractor.getInfoAboutBestTeam()
                 .doOnSubscribe(it -> sendToView(view -> view.showProgress()))
                 .subscribe(team -> {
-                    sendToView(view -> view.showInfoAboutBestTeam(team.getName(), team.getFounded(), team.getVenue(), team.getWebsite()));
-                    sendToView(view -> view.showCrestUrl(team.getCrestUrl()));
+//                    sendToView(view -> view.showInfoAboutBestTeam(team.getName(), team.getFounded(), team.getVenue(), team.getWebsite()));
+//                    sendToView(view -> view.showCrestUrl(team.getCrestUrl()));
                     sendToView(view -> view.hideProgress());
                 }, e -> {
                     sendToView(view -> view.showError(e.getMessage()));

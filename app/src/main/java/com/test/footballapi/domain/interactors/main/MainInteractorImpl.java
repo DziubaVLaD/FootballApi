@@ -7,6 +7,7 @@ import com.test.footballapi.data.model.client.AllMatchesForParticularCompetition
 import com.test.footballapi.data.model.client.CompetitionInfo;
 import com.test.footballapi.data.model.client.Matches;
 import com.test.footballapi.data.model.client.Team;
+import com.test.footballapi.data.model.client.TeamList;
 import com.test.footballapi.data.repositories.main.MainRepository;
 
 import java.text.DateFormat;
@@ -18,6 +19,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Observable;
 
 import io.reactivex.Flowable;
 import io.reactivex.Single;
@@ -56,8 +58,8 @@ public class MainInteractorImpl implements MainInteractor {
                     //TODO Refactor calculate dates
                     idCompetition = competitionInfo.getId();
                     endDateCompetition = calculateLastDay(competitionInfo.getSeasons().get(0).getEndDate());
-                    startDateCompetition = calculateFirstDay(competitionInfo.getSeasons().get(0).getStartDate(),
-                            competitionInfo.getSeasons().get(0).getEndDate());
+                    startDateCompetition = calculateFirstDay(competitionInfo.getSeasons().get(0).getStartDate()
+                    );
                     return competitionInfo;
                 })
                 .subscribeOn(Schedulers.io())
@@ -71,7 +73,6 @@ public class MainInteractorImpl implements MainInteractor {
                     for (Matches matches : allMatchesForParticularCompetition.getMatches()) {
                         checkWinnerTeam(matches);
                     }
-
                     return allMatchesForParticularCompetition;
                 })
                 .subscribeOn(Schedulers.io())
@@ -79,7 +80,7 @@ public class MainInteractorImpl implements MainInteractor {
     }
 
     @Override
-    public Single<Team> getInfoAboutBestTeam() {
+    public Single<TeamList> getInfoAboutBestTeam() {
         return mainRepository.getInfoAboutBestTeam(bestTeamList())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
@@ -95,7 +96,7 @@ public class MainInteractorImpl implements MainInteractor {
         mainRepository.unregisterNetworkCallback();
     }
 
-    private Matches checkWinnerTeam(Matches matches) {
+    private void checkWinnerTeam(Matches matches) {
         if (matches.getScore().getWinner() != null) {
             if (matches.getScore().getWinner().equals(HOME_TEAM)) {
                 addWinnerTeam(matches.getWinnerHomeTeam().getId());
@@ -103,7 +104,6 @@ public class MainInteractorImpl implements MainInteractor {
                 addWinnerTeam(matches.getWinnerAwayTeam().getId());
             }
         }
-        return matches;
     }
 
     private void addWinnerTeam(int idTeam) {
@@ -135,26 +135,25 @@ public class MainInteractorImpl implements MainInteractor {
 
     private String calculateLastDay(String endDateCompetition) throws ParseException {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        Date date1 = sdf.parse(endDateCompetition);
-        Date dateNow = new Date();
-        if (date1.compareTo(dateNow) >= 0) {
-            return convertDateToString(dateNow);
+        Date endDateCompetitionDate = sdf.parse(endDateCompetition);
+        Date currentDate = new Date();
+        if (endDateCompetitionDate.compareTo(currentDate) >= 0) {
+            return convertDateToString(currentDate);
         } else {
-            return convertDateToString(date1);
+            return convertDateToString(endDateCompetitionDate);
         }
     }
 
-    private String calculateFirstDay(String startDateCompetition, String endDateCompetition) throws ParseException {
+    private String calculateFirstDay(String startDateCompetitionString) throws ParseException {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        Date date1 = sdf.parse(startDateCompetition);
-        Date dateNow = new Date();
-        if (date1.compareTo(dateNow) < 0) {
+        Date startCompetitionDate = sdf.parse(startDateCompetitionString);
+        Date currentDate = new Date();
+        if (startCompetitionDate.compareTo(currentDate) < 0) {
             Calendar cal = Calendar.getInstance();
-            cal.add(Calendar.DATE, -30); // I just want date before 30 days. you can give that you want.
-            SimpleDateFormat s = new SimpleDateFormat("yyyy-MM-dd"); // you can specify your format here...
-            return s.format(new Date(cal.getTimeInMillis()));
+            cal.add(Calendar.DATE, -30);
+            return sdf.format(new Date(cal.getTimeInMillis()));
         } else {
-            return convertDateToString(date1);
+            return convertDateToString(startCompetitionDate);
         }
     }
 

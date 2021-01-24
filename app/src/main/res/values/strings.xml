@@ -2,4 +2,7 @@
     <string name="app_name">Football Api</string>
 
     <string name="text_no_internet">No Internet Connection</string>
+
+    <string name="text_dates">The best team in %1$s from %2$s to %3$s is: </string>
+
 </resources>

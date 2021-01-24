@@ -1,7 +1,5 @@
 package com.test.footballapi.data.model.client;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 public class Team {
     private int id;
     private String name;

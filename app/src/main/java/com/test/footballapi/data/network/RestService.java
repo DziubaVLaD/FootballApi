@@ -21,6 +21,6 @@ public interface RestService {
 
     @GET("competitions/{id}")
     Single<CompetitionInfoResponse> getInfoAboutCompetition(
-            @Header("X-Auth-Token") String token, @Path("id") String id);
+            @Header("X-Auth-Token") String token, @Path("id") int id);
 
 }

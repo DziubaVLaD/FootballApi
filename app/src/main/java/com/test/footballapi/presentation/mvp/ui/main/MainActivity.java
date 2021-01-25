@@ -9,9 +9,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
+import androidx.annotation.NonNull;
+
 import com.github.twocoffeesoneteam.glidetovectoryou.GlideToVectorYou;
-import com.github.twocoffeesoneteam.glidetovectoryou.GlideToVectorYouListener;
 import com.test.footballapi.R;
 import com.test.footballapi.presentation.base.BaseMvpActivity;
 import com.test.footballapi.presentation.mvp.presenter.main.MainPresenter;
@@ -22,25 +22,91 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
     private View offlineBanner;
     private TextView tvCompetitionName;
     private TextView tvBestTeam;
-    private ImageView ivBestTeamPLogo;
+    private ImageView ivBestTeamLogo;
+    private View vUnderLine;
+    private View vUnderLine1;
+    private View vUnderLine2;
+    private View vUnderLine3;
+    private View vUnderLine4;
+    private View vUnderLine5;
+    private View vUnderLine6;
+    private View vUnderLine7;
     private TextView tvFounded;
+    private TextView textFounded;
     private TextView tvVenue;
+    private TextView textVenue;
     private TextView tvWebsite;
+    private TextView textWebsite;
+    private TextView tvAddress;
+    private TextView textAddress;
+    private TextView tvTLA;
+    private TextView textTLA;
+    private TextView tvClubColors;
+    private TextView textClubColors;
+    private TextView tvEmail;
+    private TextView textEmail;
+    private TextView tvShortName;
+    private TextView textShortName;
+    private TextView tvPhone;
+    private TextView textPhone;
+    private String websiteTeam;
+    private String competitionNameTeam;
+    private String clubColorsTeam;
+    private String addressTeam;
+    private String bestTeam;
+    private String venueTeam;
+    private String shortNameTeam;
+    private String phoneTeam;
+    private String tlaTeam;
+    private String emailTeam;
+    private String foundedTeam;
+    private String crestUrlTeam;
+    private String startDateCalculate;
+    private String endDateCalculate;
     private View progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
         offlineBanner = findViewById(R.id.view_offline_banner);
-        tvCompetitionName = findViewById(R.id.tvCompetitionName);
+        tvCompetitionName = findViewById(R.id.tvCompetitionNameAndDates);
+        textFounded = findViewById(R.id.textFounded);
+        vUnderLine = findViewById(R.id.vUnderLine);
+        vUnderLine1 = findViewById(R.id.vUnderLine1);
+        vUnderLine2 = findViewById(R.id.vUnderLine2);
+        vUnderLine3 = findViewById(R.id.vUnderLine3);
+        vUnderLine4 = findViewById(R.id.vUnderLine4);
+        vUnderLine5 = findViewById(R.id.vUnderLine5);
+        vUnderLine6 = findViewById(R.id.vUnderLine6);
+        vUnderLine7 = findViewById(R.id.vUnderLine7);
         tvBestTeam = findViewById(R.id.tvBestTeam);
-        ivBestTeamPLogo = findViewById(R.id.tvCrestUrl);
+        textFounded = findViewById(R.id.textFounded);
+        textAddress = findViewById(R.id.textAddress);
+        tvBestTeam = findViewById(R.id.tvBestTeam);
+        textWebsite = findViewById(R.id.textWebSite);
+        textTLA = findViewById(R.id.textTLA);
+        textVenue = findViewById(R.id.textStadium);
+        tvAddress = findViewById(R.id.tvAddress);
+        textEmail = findViewById(R.id.textEmail);
+        textShortName = findViewById(R.id.textShortName);
+        textClubColors = findViewById(R.id.textClubColors);
+        tvTLA = findViewById(R.id.tvTla);
+        tvEmail = findViewById(R.id.tvEmail);
+        textPhone = findViewById(R.id.textPhone);
+        tvShortName = findViewById(R.id.tvShortName);
+        tvPhone = findViewById(R.id.tvPhone);
+        ivBestTeamLogo = findViewById(R.id.tvCrestUrl);
+        tvClubColors = findViewById(R.id.tvClubColors);
         tvFounded = findViewById(R.id.tvFounded);
         tvVenue = findViewById(R.id.tvVenue);
         tvWebsite = findViewById(R.id.tvWebsite);
         progressBar = findViewById(R.id.progress_bar);
-        presenter.onStart();
+        presenter.onCreate();
+        if (savedInstanceState == null) {
+            presenter.onStart();
+        }
         offlineBanner.setOnClickListener(this);
     }
 
@@ -61,8 +127,11 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
     }
 
     @Override
-    public void showCompetitionName(String name) {
-        tvCompetitionName.setText(name);
+    public void showCompetitionNameAndDates(String name, String startDate, String endDate) {
+        tvCompetitionName.setText(getString(R.string.text_competitionNameAndDates, name, startDate, endDate));
+        competitionNameTeam = name;
+        startDateCalculate = startDate;
+        endDateCalculate = endDate;
     }
 
     @Override
@@ -81,17 +150,97 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
     }
 
     @Override
-    public void showInfoAboutBestTeam(String name, int founded, String venue, String website) {
+    public void showInfoAboutBestTeam(String name, int founded, String teamVenue, String teamWebsite,
+                                      String address, String clubColors, String phone, String shortName,
+                                      String tla, String email) {
         tvBestTeam.setText(name);
         tvFounded.setText(String.valueOf(founded));
-        tvVenue.setText(venue);
-        tvWebsite.setText(website);
+        tvVenue.setText(teamVenue);
+        tvAddress.setText(address);
+        tvClubColors.setText(clubColors);
+        tvPhone.setText(phone);
+        tvShortName.setText(shortName);
+        tvTLA.setText(tla);
+        tvEmail.setText(email);
+        tvWebsite.setText(teamWebsite);
+        websiteTeam = teamWebsite;
+        clubColorsTeam = clubColors;
+        addressTeam = address;
+        bestTeam = name;
+        venueTeam = teamVenue;
+        shortNameTeam = shortName;
+        phoneTeam = phone;
+        tlaTeam = tla;
+        emailTeam = email;
+        foundedTeam = String.valueOf(founded);
+        showAllViews();
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+
+        savedInstanceState.putString("website", websiteTeam);
+        savedInstanceState.putString("bestTeam", bestTeam);
+        savedInstanceState.putString("address", addressTeam);
+        savedInstanceState.putString("clubColor", clubColorsTeam);
+        savedInstanceState.putString("phone", phoneTeam);
+        savedInstanceState.putString("shortName", shortNameTeam);
+        savedInstanceState.putString("tla", tlaTeam);
+        savedInstanceState.putString("email", emailTeam);
+        savedInstanceState.putString("competition", competitionNameTeam);
+        savedInstanceState.putString("venue", venueTeam);
+        savedInstanceState.putString("founded", foundedTeam);
+        savedInstanceState.putString("crestUrl", crestUrlTeam);
+        savedInstanceState.putString("startDateCalculate", startDateCalculate);
+        savedInstanceState.putString("endDateCalculate", endDateCalculate);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        bestTeam = savedInstanceState.getString("bestTeam");
+        foundedTeam = savedInstanceState.getString("founded");
+        venueTeam = savedInstanceState.getString("venue");
+        addressTeam = savedInstanceState.getString("address");
+        clubColorsTeam = savedInstanceState.getString("clubColor");
+        phoneTeam = savedInstanceState.getString("phone");
+        shortNameTeam = savedInstanceState.getString("shortName");
+        tlaTeam = savedInstanceState.getString("tla");
+        emailTeam = savedInstanceState.getString("email");
+        websiteTeam = savedInstanceState.getString("website");
+        competitionNameTeam = savedInstanceState.getString("competition");
+        startDateCalculate = savedInstanceState.getString("startDateCalculate");
+        endDateCalculate = savedInstanceState.getString("endDateCalculate");
+        crestUrlTeam = savedInstanceState.getString("crestUrl");
+        if (savedInstanceState.getString("crestUrl") != null) {
+            GlideToVectorYou.justLoadImageAsBackground(this, Uri.parse(savedInstanceState.getString("crestUrl")), ivBestTeamLogo);
+        }
+
+        tvBestTeam.setText(bestTeam);
+        tvFounded.setText(foundedTeam);
+        tvVenue.setText(venueTeam);
+        tvAddress.setText(addressTeam);
+        tvClubColors.setText(clubColorsTeam);
+        tvPhone.setText(phoneTeam);
+        tvShortName.setText(shortNameTeam);
+        tvTLA.setText(tlaTeam);
+        tvEmail.setText(emailTeam);
+        tvWebsite.setText(websiteTeam);
+        tvCompetitionName.setText(getString(R.string.text_competitionNameAndDates,
+                competitionNameTeam,
+                startDateCalculate,
+                endDateCalculate));
+        if (crestUrlTeam != null) {
+            GlideToVectorYou.justLoadImageAsBackground(this, Uri.parse(crestUrlTeam), ivBestTeamLogo);
+        }
+        showAllViews();
     }
 
     @Override
     public void showCrestUrl(String crestUrl) {
-        GlideToVectorYou.justLoadImageAsBackground(this, Uri.parse(crestUrl), ivBestTeamPLogo);
-
+        crestUrlTeam = crestUrl;
+        GlideToVectorYou.justLoadImageAsBackground(this, Uri.parse(crestUrl), ivBestTeamLogo);
     }
 
     @Override
@@ -101,6 +250,38 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
                 presenter.onOfflineBannerClicked();
                 break;
         }
+    }
+
+    private void showAllViews() {
+        tvBestTeam.setVisibility(View.VISIBLE);
+        tvFounded.setVisibility(View.VISIBLE);
+        textFounded.setVisibility(View.VISIBLE);
+        tvVenue.setVisibility(View.VISIBLE);
+        textVenue.setVisibility(View.VISIBLE);
+        tvAddress.setVisibility(View.VISIBLE);
+        textAddress.setVisibility(View.VISIBLE);
+        tvClubColors.setVisibility(View.VISIBLE);
+        textClubColors.setVisibility(View.VISIBLE);
+        tvPhone.setVisibility(View.VISIBLE);
+        textPhone.setVisibility(View.VISIBLE);
+        tvShortName.setVisibility(View.VISIBLE);
+        textShortName.setVisibility(View.VISIBLE);
+        tvTLA.setVisibility(View.VISIBLE);
+        textTLA.setVisibility(View.VISIBLE);
+        tvEmail.setVisibility(View.VISIBLE);
+        textEmail.setVisibility(View.VISIBLE);
+        tvWebsite.setVisibility(View.VISIBLE);
+        textWebsite.setVisibility(View.VISIBLE);
+        tvCompetitionName.setVisibility(View.VISIBLE);
+        ivBestTeamLogo.setVisibility(View.VISIBLE);
+        vUnderLine.setVisibility(View.VISIBLE);
+        vUnderLine1.setVisibility(View.VISIBLE);
+        vUnderLine2.setVisibility(View.VISIBLE);
+        vUnderLine3.setVisibility(View.VISIBLE);
+        vUnderLine4.setVisibility(View.VISIBLE);
+        vUnderLine5.setVisibility(View.VISIBLE);
+        vUnderLine6.setVisibility(View.VISIBLE);
+        vUnderLine7.setVisibility(View.VISIBLE);
     }
 
     @Override

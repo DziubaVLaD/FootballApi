@@ -7,7 +7,7 @@ public interface MainView extends MvpView {
 
     void showNetworkSettings();
 
-    void showCompetitionName(String name);
+    void showCompetitionNameAndDates(String name, String startDate, String endDate);
 
     void showProgress();
 
@@ -15,7 +15,9 @@ public interface MainView extends MvpView {
 
     void showError(String message);
 
-    void showInfoAboutBestTeam(String name, int founded, String venue, String website);
+    void showInfoAboutBestTeam(String name, int founded, String teamVenue, String teamWebsite,
+                               String address, String clubColors, String phone, String shortName,
+                               String tla, String email);
 
     void showCrestUrl(String crestUrl);
 }

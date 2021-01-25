@@ -10,7 +10,6 @@ public class MatchesMapper {
     WinnerTeamMapper winnerTeamMapper = new WinnerTeamMapper();
     ScoreMapper scoreMapper = new ScoreMapper();
 
-
     public List<Matches> transform(List<MatchesResponse> matchesResponseList) {
         List<Matches> matchesList = new ArrayList<>();
         for (MatchesResponse matchesResponse : matchesResponseList) {
@@ -24,7 +23,6 @@ public class MatchesMapper {
         matches.setWinneAwayTeam(winnerTeamMapper.transform(matchesResponse.getAwayTeam()));
         matches.setWinnerHomeTeam(winnerTeamMapper.transform(matchesResponse.getHomeTeam()));
         matches.setScore(scoreMapper.transform(matchesResponse.getScore()));
-        matches.setUtcDate(matchesResponse.getUtcDate());
         return matches;
     }
 }

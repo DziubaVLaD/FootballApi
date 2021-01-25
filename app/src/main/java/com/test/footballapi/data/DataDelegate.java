@@ -28,7 +28,7 @@ public class DataDelegate implements DataManager {
     }
 
     @Override
-    public Single<CompetitionInfoResponse> getInfoAboutCompetition(String token, String id) {
+    public Single<CompetitionInfoResponse> getInfoAboutCompetition(String token, int id) {
         return restService.getInfoAboutCompetition(token, id);
     }
 

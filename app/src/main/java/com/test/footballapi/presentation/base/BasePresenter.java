@@ -52,14 +52,6 @@ public class BasePresenter<T extends MvpView> implements Presenter<T> {
         }
     }
 
-    protected boolean isAttached() {
-        return mvpView != null;
-    }
-
-    public void clearDisposables() {
-        disposables.clear();
-    }
-
     public void removeDisposable(Disposable disposable) {
         disposables.remove(disposable);
     }

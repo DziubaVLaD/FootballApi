@@ -3,18 +3,30 @@ package com.test.footballapi.data.model;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class TeamResponse {
-    @JsonProperty("id")
+    @JsonProperty
     private int id;
-    @JsonProperty("name")
+    @JsonProperty
     private String name;
-    @JsonProperty("crestUrl")
+    @JsonProperty
+    private String shortName;
+    @JsonProperty
+    private String tla;
+    @JsonProperty
     private String crestUrl;
-    @JsonProperty("venue")
-    private String venue;
-    @JsonProperty("website")
+    @JsonProperty
+    private String address;
+    @JsonProperty
+    private String phone;
+    @JsonProperty
     private String website;
-    @JsonProperty("founded")
+    @JsonProperty
+    private String email;
+    @JsonProperty
     private int founded;
+    @JsonProperty
+    private String clubColors;
+    @JsonProperty
+    private String venue;
 
     public int getId() {
         return id;
@@ -62,5 +74,53 @@ public class TeamResponse {
 
     public void setFounded(int founded) {
         this.founded = founded;
+    }
+
+    public String getShortName() {
+        return shortName;
+    }
+
+    public void setShortName(String shortName) {
+        this.shortName = shortName;
+    }
+
+    public String getTla() {
+        return tla;
+    }
+
+    public void setTla(String tla) {
+        this.tla = tla;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getClubColors() {
+        return clubColors;
+    }
+
+    public void setClubColors(String clubColors) {
+        this.clubColors = clubColors;
     }
 }

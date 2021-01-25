@@ -4,12 +4,12 @@ import com.test.footballapi.data.model.AllMatchesForParticularCompetitionRespons
 import com.test.footballapi.data.model.client.AllMatchesForParticularCompetition;
 
 
-public class AllMatchesForParticularCompetitionMapper extends BaseMapper{
+public class AllMatchesForParticularCompetitionMapper {
     private MatchesMapper matchesMapper = new MatchesMapper();
 
     public AllMatchesForParticularCompetition transform(AllMatchesForParticularCompetitionResponse allMatchesForParticularCompetitionResponse) {
-    AllMatchesForParticularCompetition allMatchesForParticularCompetition = new AllMatchesForParticularCompetition();
-    allMatchesForParticularCompetition.setMatches(matchesMapper.transform(allMatchesForParticularCompetitionResponse.getMatches()));
-    return allMatchesForParticularCompetition;
+        AllMatchesForParticularCompetition allMatchesForParticularCompetition = new AllMatchesForParticularCompetition();
+        allMatchesForParticularCompetition.setMatches(matchesMapper.transform(allMatchesForParticularCompetitionResponse.getMatches()));
+        return allMatchesForParticularCompetition;
     }
 }

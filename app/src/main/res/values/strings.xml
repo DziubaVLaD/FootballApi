@@ -1,8 +1,18 @@
 <resources>
     <string name="app_name">Football Api</string>
 
+    <string name="textFounded">Founded:</string>
+    <string name="textVenue">Venue:</string>
+    <string name="textWebSite">Web-site:</string>
+    <string name="textShortName">Short name:</string>
+    <string name="textTLA">TLA:</string>
+    <string name="textPhone">Phone:</string>
+    <string name="textClubColors">Club colors:</string>
+    <string name="textEmail">Email:</string>
+    <string name="textAddress">Address:</string>
+
     <string name="text_no_internet">No Internet Connection</string>
 
-    <string name="text_dates">The best team in %1$s from %2$s to %3$s is: </string>
+    <string name="text_competitionNameAndDates">Football team which won most matches in\n%1$s\nfrom %2$s to %3$s\nis: </string>
 
 </resources>

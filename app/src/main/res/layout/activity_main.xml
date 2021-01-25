@@ -1,86 +1,433 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".presentation.mvp.ui.main.MainActivity">
+    android:layout_height="wrap_content"
+    android:fillViewport="true">
 
-    <include
-        layout="@layout/layout_offline_banner" />
-
-    <TextView
-        android:id="@+id/tvCompetitionName"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:text="@string/text_dates"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf= "parent"
-        tools:text="UEFA Champions League"/>
+        tools:context=".presentation.mvp.ui.main.MainActivity">
 
-    <ProgressBar
-        android:id="@+id/progress_bar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:indeterminate="true"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:visibility="visible" />
+        <ImageView
+            android:id="@+id/tvCrestUrl"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvBestTeam"
+            tools:src="@drawable/ic_launcher_foreground"
+            tools:visibility="visible"/>
 
-    <TextView
-        android:id="@+id/tvBestTeam"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvCompetitionName"
-        tools:text="Real Madrid"/>
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:indeterminate="true"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="gone" />
 
-    <ImageView
-        android:id="@+id/tvCrestUrl"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvBestTeam"
-        tools:src="@drawable/ic_launcher_foreground"/>
+        <TextView
+            android:id="@+id/tvCompetitionNameAndDates"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="52dp"
+            android:layout_marginEnd="16dp"
+            android:gravity="center"
+            android:visibility="invisible"
+            android:padding="5dp"
+            android:textColor="@color/black"
+            android:textSize="16dp"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="The best team in\nUEFA Champions League\nfrom 01-01-2000 to 01-01-2000\nis "
+            tools:visibility="visible"/>
 
-    <TextView
-        android:id="@+id/tvFounded"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvCrestUrl"
-        tools:text="2004"/>
+        <TextView
+            android:id="@+id/tvBestTeam"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:textColor="@color/black"
+            android:visibility="invisible"
+            android:textSize="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvCompetitionNameAndDates"
+            tools:text="Real Madrid"
+            tools:visibility="visible"/>
 
-    <TextView
-        android:id="@+id/tvVenue"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvFounded"
-        tools:text="Santiago Bernabéu"/>
+        <TextView
+            android:id="@+id/tvFounded"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="8dp"
+            android:visibility="invisible"
+            android:gravity="end"
+            android:textColor="@color/black"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/textFounded"
+            app:layout_constraintTop_toBottomOf="@+id/tvCrestUrl"
+            tools:text="2004"
+            tools:visibility="visible"/>
 
-    <TextView
-        android:id="@+id/tvWebsite"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvVenue"
-        tools:text="https://www.realmadrid.com/" />
+        <TextView
+            android:id="@+id/tvVenue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="8dp"
+            android:visibility="invisible"
+            android:gravity="end"
+            android:textColor="@color/black"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/textStadium"
+            app:layout_constraintTop_toBottomOf="@+id/tvFounded"
+            tools:text="Santiago Bernabéu"
+            tools:visibility="visible"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/tvWebsite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="8dp"
+            android:visibility="invisible"
+            android:gravity="end"
+            android:textColor="@color/black"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/textWebSite"
+            app:layout_constraintTop_toBottomOf="@+id/vUnderLine1"
+            tools:text="https://www.realmadrid.com/"
+            tools:visibility="visible"/>
+
+        <TextView
+            android:id="@+id/textFounded"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="24dp"
+            android:visibility="invisible"
+            android:text="@string/textFounded"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvCrestUrl"
+            tools:visibility="visible"/>
+
+        <TextView
+            android:id="@+id/textStadium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:visibility="invisible"
+            android:text="@string/textVenue"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/progress_bar"
+            tools:visibility="visible"/>
+
+        <TextView
+            android:id="@+id/textWebSite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:visibility="invisible"
+            android:text="@string/textWebSite"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/vUnderLine1"
+            tools:visibility="visible"/>
+
+        <TextView
+            android:id="@+id/textShortName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:visibility="invisible"
+            android:text="@string/textShortName"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/vUnderLine2"
+            tools:visibility="visible"/>
+
+        <TextView
+            android:id="@+id/tvShortName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="8dp"
+            android:visibility="invisible"
+            android:gravity="end"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/textShortName"
+            app:layout_constraintTop_toBottomOf="@+id/vUnderLine2"
+            tools:text="M'gladbach"
+            tools:visibility="visible"/>
+
+        <TextView
+            android:id="@+id/tvTla"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="8dp"
+            android:visibility="invisible"
+            android:gravity="end"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/textTLA"
+            app:layout_constraintTop_toBottomOf="@+id/vUnderLine3"
+            tools:text="BMG"
+            tools:visibility="visible"/>
+
+        <TextView
+            android:id="@+id/textTLA"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:visibility="invisible"
+            android:text="@string/textTLA"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/vUnderLine3"
+            tools:visibility="visible"/>
+
+        <TextView
+            android:id="@+id/textPhone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:visibility="invisible"
+            android:text="@string/textPhone"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/vUnderLine4"
+            tools:visibility="visible"/>
+
+        <TextView
+            android:id="@+id/tvPhone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="8dp"
+            android:visibility="invisible"
+            android:gravity="end"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/textPhone"
+            app:layout_constraintTop_toBottomOf="@+id/vUnderLine4"
+            tools:text="+49 (02161) 92930"
+            tools:visibility="visible"/>
+
+        <TextView
+            android:id="@+id/textClubColors"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:visibility="invisible"
+            android:text="@string/textClubColors"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/vUnderLine5"
+            tools:visibility="visible"/>
+
+        <TextView
+            android:id="@+id/tvClubColors"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="8dp"
+            android:visibility="invisible"
+            android:gravity="end"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/textClubColors"
+            app:layout_constraintTop_toBottomOf="@+id/vUnderLine5"
+            tools:text="Black / White / Green"
+            tools:visibility="visible"/>
+
+        <TextView
+            android:id="@+id/textEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:visibility="invisible"
+            android:text="@string/textEmail"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/vUnderLine6"
+            tools:visibility="visible"/>
+
+        <TextView
+            android:id="@+id/tvEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="8dp"
+            android:visibility="invisible"
+            android:gravity="end"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/textEmail"
+            app:layout_constraintTop_toBottomOf="@+id/vUnderLine6"
+            tools:text="info@borussia.de"
+            tools:visibility="visible"/>
+
+        <TextView
+            android:id="@+id/textAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:visibility="invisible"
+            android:text="@string/textAddress"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/vUnderLine7"
+            tools:visibility="visible"/>
+
+        <TextView
+            android:id="@+id/tvAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="8dp"
+            android:visibility="invisible"
+            android:gravity="end"
+            app:layout_constrainedWidth="true"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/textAddress"
+            app:layout_constraintTop_toBottomOf="@+id/vUnderLine7"
+            tools:text="Hennes-Weisweiler-Allee 1 Mönchengladbach 41179"
+            tools:visibility="visible"/>
+
+        <View
+            android:id="@+id/vUnderLine"
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:background="@color/grey_99"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toTopOf="@+id/progress_bar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textFounded"
+            tools:visibility="visible"/>
+
+        <View
+            android:id="@+id/vUnderLine1"
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:background="@color/grey_99"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvVenue"
+            tools:visibility="visible"/>
+
+        <View
+            android:id="@+id/vUnderLine2"
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:background="@color/grey_99"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvWebsite"
+            tools:visibility="visible"/>
+
+        <View
+            android:id="@+id/vUnderLine3"
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:background="@color/grey_99"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvShortName"
+            tools:visibility="visible"/>
+
+        <View
+            android:id="@+id/vUnderLine4"
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:background="@color/grey_99"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvTla"
+            tools:visibility="visible"/>
+
+        <View
+            android:id="@+id/vUnderLine5"
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:background="@color/grey_99"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvPhone"
+            tools:visibility="visible"/>
+
+        <View
+            android:id="@+id/vUnderLine6"
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:background="@color/grey_99"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvClubColors"
+            tools:visibility="visible"/>
+
+        <View
+            android:id="@+id/vUnderLine7"
+            android:layout_width="wrap_content"
+            android:layout_height="1dp"
+            android:background="@color/grey_99"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvEmail"
+            tools:visibility="visible"/>
+
+        <include
+            layout="@layout/layout_offline_banner"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

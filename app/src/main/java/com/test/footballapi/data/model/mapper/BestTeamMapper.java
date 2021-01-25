@@ -12,6 +12,12 @@ public class BestTeamMapper {
         team.setName(teamResponse.getName());
         team.setVenue(teamResponse.getVenue());
         team.setWebsite(teamResponse.getWebsite());
+        team.setAddress(teamResponse.getAddress());
+        team.setClubColors(teamResponse.getClubColors());
+        team.setEmail(teamResponse.getEmail());
+        team.setShortName(teamResponse.getShortName());
+        team.setTla(teamResponse.getTla());
+        team.setPhone(teamResponse.getPhone());
         return team;
     }
 }

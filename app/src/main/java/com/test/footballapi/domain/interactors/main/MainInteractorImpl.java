@@ -1,13 +1,10 @@
 package com.test.footballapi.domain.interactors.main;
 
-import android.util.Log;
-
 import com.test.footballapi.data.model.NetworkEvent;
 import com.test.footballapi.data.model.client.AllMatchesForParticularCompetition;
 import com.test.footballapi.data.model.client.CompetitionInfo;
 import com.test.footballapi.data.model.client.Matches;
 import com.test.footballapi.data.model.client.Team;
-import com.test.footballapi.data.model.client.TeamList;
 import com.test.footballapi.data.repositories.main.MainRepository;
 
 import java.text.DateFormat;
@@ -19,7 +16,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Observable;
 
 import io.reactivex.Flowable;
 import io.reactivex.Single;
@@ -51,6 +47,14 @@ public class MainInteractorImpl implements MainInteractor {
                 .observeOn(AndroidSchedulers.mainThread());
     }
 
+    public String getStartDate() {
+        return startDateCompetition;
+    }
+
+    public String getEndDate() {
+        return endDateCompetition;
+    }
+
     @Override
     public Single<CompetitionInfo> getInfoAboutCompetition() {
         return mainRepository.getInfoAboutCompetition()
@@ -80,7 +84,7 @@ public class MainInteractorImpl implements MainInteractor {
     }
 
     @Override
-    public Single<TeamList> getInfoAboutBestTeam() {
+    public Single<Team> getInfoAboutBestTeam() {
         return mainRepository.getInfoAboutBestTeam(bestTeamList())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
@@ -112,7 +116,6 @@ public class MainInteractorImpl implements MainInteractor {
         } else {
             teamsHashMap.put(idTeam, 1);
         }
-        Log.i("HASHMAP", "HASHMAP " + teamsHashMap);
     }
 
     private List<Integer> bestTeamList() {
@@ -129,7 +132,6 @@ public class MainInteractorImpl implements MainInteractor {
                 idBestTeamsList.add(key);
             }
         }
-        Log.i("List", "idBestTeamsList " + idBestTeamsList);
         return idBestTeamsList;
     }
 

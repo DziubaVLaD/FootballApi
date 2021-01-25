@@ -17,7 +17,6 @@ import io.reactivex.plugins.RxJavaPlugins;
 public class App extends Application {
     private static App instance;
     private DataManager dataManager;
-
     @Override
     public void onCreate() {
         super.onCreate();

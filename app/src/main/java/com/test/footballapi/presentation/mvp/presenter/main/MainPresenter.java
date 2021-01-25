@@ -19,7 +19,7 @@ public class MainPresenter extends BasePresenter<MainView> {
         subscribeOnNetworkEvents();
         mainInteractor.registerNetworkCallback();
         sendToView(view -> view.showNetworkBanner(mainInteractor.isNetworkConnected()));
-        if (mainInteractor.isNetworkConnected() == false) {
+        if (!mainInteractor.isNetworkConnected()) {
             updateInfoAfterInternetConnect = true;
         }
     }
@@ -31,7 +31,7 @@ public class MainPresenter extends BasePresenter<MainView> {
     private void subscribeOnNetworkEvents() {
         networkDisposable = mainInteractor.subscribeOnNetworkEvents()
                 .subscribe(networkEvent -> {
-                    if (networkEvent.isConnected() == false) {
+                    if (!networkEvent.isConnected()) {
                         updateInfoAfterInternetConnect = true;
                     }
                     if (networkEvent.isConnected() && updateInfoAfterInternetConnect) {
@@ -39,27 +39,27 @@ public class MainPresenter extends BasePresenter<MainView> {
                         updateInfoAfterInternetConnect = false;
                     }
                     sendToView(view -> view.showNetworkBanner(networkEvent.isConnected()));
-                }, e -> e.printStackTrace());
+                }, Throwable::printStackTrace);
         addDisposable(networkDisposable);
     }
 
     public void getBestTeam() {
         addDisposable(mainInteractor.getBestTeam()
-                .doOnSubscribe(it -> sendToView(view -> view.showProgress()))
+                .doOnSubscribe(it -> sendToView(MainView::showProgress))
                 .doOnSuccess(allMatchesForParticularCompetition -> {
                 })
                 .subscribe(allMatchesForParticularCompetition -> {
                     getInfoAboutBestTeam();
-                    sendToView(view -> view.hideProgress());
+                    sendToView(MainView::hideProgress);
                 }, e -> {
                     sendToView(view -> view.showError(e.getMessage()));
-                    sendToView(view -> view.hideProgress());
+                    sendToView(MainView::hideProgress);
                 }));
     }
 
     public void getInfoAboutBestTeam() {
         addDisposable(mainInteractor.getInfoAboutBestTeam()
-                .doOnSubscribe(it -> sendToView(view -> view.showProgress()))
+                .doOnSubscribe(it -> sendToView(MainView::showProgress))
                 .subscribe(team -> {
                     sendToView(view -> view.showInfoAboutBestTeam(team.getName(), team.getFounded(),
                             team.getVenue(), team.getWebsite(), team.getAddress(), team.getClubColors(),
@@ -74,7 +74,7 @@ public class MainPresenter extends BasePresenter<MainView> {
 
     public void getInfoAboutCompetition() {
         addDisposable(mainInteractor.getInfoAboutCompetition()
-                .doOnSubscribe(it -> sendToView(view -> view.showProgress()))
+                .doOnSubscribe(it -> sendToView(MainView::showProgress))
                 .doOnSuccess(competitionInfo -> {
                     getBestTeam();
                 })

@@ -10,6 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.Group;
 
 import com.github.twocoffeesoneteam.glidetovectoryou.GlideToVectorYou;
 import com.test.footballapi.R;
@@ -19,36 +20,22 @@ import com.test.footballapi.presentation.mvp.presenter.main.MainView;
 
 public class MainActivity extends BaseMvpActivity<MainPresenter> implements MainView, View.OnClickListener {
 
-    private View offlineBanner;
+
     private TextView tvCompetitionName;
     private TextView tvBestTeam;
     private ImageView ivBestTeamLogo;
-    private View vUnderLine;
-    private View vUnderLine1;
-    private View vUnderLine2;
-    private View vUnderLine3;
-    private View vUnderLine4;
-    private View vUnderLine5;
-    private View vUnderLine6;
-    private View vUnderLine7;
     private TextView tvFounded;
-    private TextView textFounded;
     private TextView tvVenue;
-    private TextView textVenue;
-    private TextView tvWebsite;
-    private TextView textWebsite;
     private TextView tvAddress;
-    private TextView textAddress;
     private TextView tvTLA;
-    private TextView textTLA;
     private TextView tvClubColors;
-    private TextView textClubColors;
     private TextView tvEmail;
-    private TextView textEmail;
     private TextView tvShortName;
-    private TextView textShortName;
     private TextView tvPhone;
-    private TextView textPhone;
+    private TextView tvWebsite;
+    private View progressBar;
+    private Group groupInfoCompetitionAndBestTeam;
+    private View offlineBanner;
     private String websiteTeam;
     private String competitionNameTeam;
     private String clubColorsTeam;
@@ -63,46 +50,27 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
     private String crestUrlTeam;
     private String startDateCalculate;
     private String endDateCalculate;
-    private View progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
-        offlineBanner = findViewById(R.id.view_offline_banner);
-        tvCompetitionName = findViewById(R.id.tvCompetitionNameAndDates);
-        textFounded = findViewById(R.id.textFounded);
-        vUnderLine = findViewById(R.id.vUnderLine);
-        vUnderLine1 = findViewById(R.id.vUnderLine1);
-        vUnderLine2 = findViewById(R.id.vUnderLine2);
-        vUnderLine3 = findViewById(R.id.vUnderLine3);
-        vUnderLine4 = findViewById(R.id.vUnderLine4);
-        vUnderLine5 = findViewById(R.id.vUnderLine5);
-        vUnderLine6 = findViewById(R.id.vUnderLine6);
-        vUnderLine7 = findViewById(R.id.vUnderLine7);
         tvBestTeam = findViewById(R.id.tvBestTeam);
-        textFounded = findViewById(R.id.textFounded);
-        textAddress = findViewById(R.id.textAddress);
-        tvBestTeam = findViewById(R.id.tvBestTeam);
-        textWebsite = findViewById(R.id.textWebSite);
-        textTLA = findViewById(R.id.textTLA);
-        textVenue = findViewById(R.id.textStadium);
         tvAddress = findViewById(R.id.tvAddress);
-        textEmail = findViewById(R.id.textEmail);
-        textShortName = findViewById(R.id.textShortName);
-        textClubColors = findViewById(R.id.textClubColors);
         tvTLA = findViewById(R.id.tvTla);
         tvEmail = findViewById(R.id.tvEmail);
-        textPhone = findViewById(R.id.textPhone);
         tvShortName = findViewById(R.id.tvShortName);
         tvPhone = findViewById(R.id.tvPhone);
         ivBestTeamLogo = findViewById(R.id.tvCrestUrl);
         tvClubColors = findViewById(R.id.tvClubColors);
         tvFounded = findViewById(R.id.tvFounded);
         tvVenue = findViewById(R.id.tvVenue);
-        tvWebsite = findViewById(R.id.tvWebsite);
+        tvCompetitionName = findViewById(R.id.tvCompetitionNameAndDates);
         progressBar = findViewById(R.id.progress_bar);
+        offlineBanner = findViewById(R.id.view_offline_banner);
+        tvWebsite = findViewById(R.id.tvWebsite);
+        groupInfoCompetitionAndBestTeam = findViewById(R.id.group_info_competition_and_best_team);
         presenter.onCreate();
         if (savedInstanceState == null) {
             presenter.onStart();
@@ -253,35 +221,7 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
     }
 
     private void showAllViews() {
-        tvBestTeam.setVisibility(View.VISIBLE);
-        tvFounded.setVisibility(View.VISIBLE);
-        textFounded.setVisibility(View.VISIBLE);
-        tvVenue.setVisibility(View.VISIBLE);
-        textVenue.setVisibility(View.VISIBLE);
-        tvAddress.setVisibility(View.VISIBLE);
-        textAddress.setVisibility(View.VISIBLE);
-        tvClubColors.setVisibility(View.VISIBLE);
-        textClubColors.setVisibility(View.VISIBLE);
-        tvPhone.setVisibility(View.VISIBLE);
-        textPhone.setVisibility(View.VISIBLE);
-        tvShortName.setVisibility(View.VISIBLE);
-        textShortName.setVisibility(View.VISIBLE);
-        tvTLA.setVisibility(View.VISIBLE);
-        textTLA.setVisibility(View.VISIBLE);
-        tvEmail.setVisibility(View.VISIBLE);
-        textEmail.setVisibility(View.VISIBLE);
-        tvWebsite.setVisibility(View.VISIBLE);
-        textWebsite.setVisibility(View.VISIBLE);
-        tvCompetitionName.setVisibility(View.VISIBLE);
-        ivBestTeamLogo.setVisibility(View.VISIBLE);
-        vUnderLine.setVisibility(View.VISIBLE);
-        vUnderLine1.setVisibility(View.VISIBLE);
-        vUnderLine2.setVisibility(View.VISIBLE);
-        vUnderLine3.setVisibility(View.VISIBLE);
-        vUnderLine4.setVisibility(View.VISIBLE);
-        vUnderLine5.setVisibility(View.VISIBLE);
-        vUnderLine6.setVisibility(View.VISIBLE);
-        vUnderLine7.setVisibility(View.VISIBLE);
+        groupInfoCompetitionAndBestTeam.setVisibility(View.VISIBLE);
     }
 
     @Override

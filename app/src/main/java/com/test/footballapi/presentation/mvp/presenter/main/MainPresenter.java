@@ -65,10 +65,10 @@ public class MainPresenter extends BasePresenter<MainView> {
                             team.getVenue(), team.getWebsite(), team.getAddress(), team.getClubColors(),
                             team.getPhone(), team.getShortName(), team.getTla(), team.getEmail()));
                     sendToView(view -> view.showCrestUrl(team.getCrestUrl()));
-                    sendToView(view -> view.hideProgress());
+                    sendToView(MainView::hideProgress);
                 }, e -> {
                     sendToView(view -> view.showError(e.getMessage()));
-                    sendToView(view -> view.hideProgress());
+                    sendToView(MainView::hideProgress);
                 }));
     }
 
@@ -80,16 +80,16 @@ public class MainPresenter extends BasePresenter<MainView> {
                 })
                 .subscribe(competitionInfo -> {
                     sendToView(view -> view.showCompetitionNameAndDates(competitionInfo.getName(), mainInteractor.getStartDate(), mainInteractor.getEndDate()));
-                    sendToView(view -> view.hideProgress());
+                    sendToView(MainView::hideProgress);
                 }, e -> {
                     sendToView(view -> view.showError(e.getMessage()));
-                    sendToView(view -> view.hideProgress());
+                    sendToView(MainView::hideProgress);
                 }))
         ;
     }
 
     public void onOfflineBannerClicked() {
-        sendToView(view -> view.showNetworkSettings());
+        sendToView(MainView::showNetworkSettings);
     }
 
     public void onStop() {

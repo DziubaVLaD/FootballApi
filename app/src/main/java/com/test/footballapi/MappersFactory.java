@@ -3,33 +3,24 @@ package com.test.footballapi;
 import com.test.footballapi.data.model.mapper.AboutCompetitionMapper;
 import com.test.footballapi.data.model.mapper.AllMatchesForParticularCompetitionMapper;
 import com.test.footballapi.data.model.mapper.MatchesMapper;
-import com.test.footballapi.data.model.mapper.ScoreMapper;
 import com.test.footballapi.data.model.mapper.SeasonsMapper;
-import com.test.footballapi.data.model.mapper.WinnerTeamMapper;
 
 public class MappersFactory {
-    private MatchesMapper matchesMapper;
-    private final WinnerTeamMapper winnerTeamMapper;
-    private final ScoreMapper scoreMapper;
+    private final MatchesMapper matchesMapper;
     private final SeasonsMapper seasonsMapper;
 
     private static volatile MappersFactory INSTANCE;
 
-    public MappersFactory(MatchesMapper matchesMapper, WinnerTeamMapper winnerTeamMapper, ScoreMapper scoreMapper, SeasonsMapper seasonsMapper) {
+    public MappersFactory(MatchesMapper matchesMapper, SeasonsMapper seasonsMapper) {
         this.matchesMapper = matchesMapper;
-        this.winnerTeamMapper = winnerTeamMapper;
-        this.scoreMapper = scoreMapper;
         this.seasonsMapper = seasonsMapper;
     }
 
-    public static MappersFactory getInstance(MatchesMapper matchesMapper,
-                                             WinnerTeamMapper winnerTeamMapper,
-                                             ScoreMapper scoreMapper,
-                                             SeasonsMapper seasonsMapper) {
+    public static MappersFactory getInstance(MatchesMapper matchesMapper, SeasonsMapper seasonsMapper) {
         if (INSTANCE == null) {
             synchronized (MappersFactory.class) {
                 if (INSTANCE == null) {
-                    INSTANCE = new MappersFactory(matchesMapper, winnerTeamMapper, scoreMapper, seasonsMapper);
+                    INSTANCE = new MappersFactory(matchesMapper, seasonsMapper);
                 }
             }
         }

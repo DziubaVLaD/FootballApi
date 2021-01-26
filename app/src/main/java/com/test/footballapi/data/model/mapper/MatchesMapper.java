@@ -7,8 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MatchesMapper {
-    private WinnerTeamMapper winnerTeamMapper;
-    private ScoreMapper scoreMapper;
+    private final WinnerTeamMapper winnerTeamMapper;
+    private final ScoreMapper scoreMapper;
 
     public MatchesMapper(WinnerTeamMapper winnerTeamMapper, ScoreMapper scoreMapper) {
         this.winnerTeamMapper = winnerTeamMapper;

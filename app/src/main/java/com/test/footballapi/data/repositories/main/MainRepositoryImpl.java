@@ -8,7 +8,6 @@ import com.test.footballapi.data.model.client.Team;
 import com.test.footballapi.data.model.mapper.AboutCompetitionMapper;
 import com.test.footballapi.data.model.mapper.AllMatchesForParticularCompetitionMapper;
 import com.test.footballapi.data.model.mapper.BestTeamMapper;
-import com.test.footballapi.presentation.base.BaseMapper;
 import com.test.footballapi.utils.AppConstants;
 
 import java.util.List;

@@ -36,8 +36,6 @@ public class BasePresenter<T extends MvpView> implements Presenter<T> {
         postponedViewActions.clear();
     }
 
-    // TODO if device sleep. View put in presenter actions. After attach all collected event send to view.
-    // Need to do strategies to complete only last action in case of Timer events for example.
     public void sendToView(final ViewAction<T> action) {
         if (mvpView != null) {
             action.call(mvpView);

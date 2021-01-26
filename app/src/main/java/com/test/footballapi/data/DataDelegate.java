@@ -12,14 +12,13 @@ import io.reactivex.Single;
 
 public class DataDelegate implements DataManager {
 
-    private RestService restService;
-    private NetworkManager networkManager;
+    private final RestService restService;
+    private final NetworkManager networkManager;
 
     public DataDelegate(RestService restService,
                         NetworkManager networkManager) {
         this.restService = restService;
         this.networkManager = networkManager;
-
     }
 
     @Override

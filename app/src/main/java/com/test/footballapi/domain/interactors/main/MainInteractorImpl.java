@@ -60,8 +60,7 @@ public class MainInteractorImpl implements MainInteractor {
                 .map(competitionInfo -> {
                     idCompetition = competitionInfo.getId();
                     endDateCompetition = CalculateDateInterval.calculateLastDay(competitionInfo.getSeasons().get(0).getEndDate());
-                    startDateCompetition = CalculateDateInterval.calculateFirstDay(competitionInfo.getSeasons().get(0).getStartDate()
-                    );
+                    startDateCompetition = CalculateDateInterval.calculateFirstDay(endDateCompetition);
                     return competitionInfo;
                 })
                 .subscribeOn(Schedulers.io())

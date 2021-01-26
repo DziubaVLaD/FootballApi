@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:fillViewport="true">
@@ -13,7 +12,7 @@
         tools:context=".presentation.mvp.ui.main.MainActivity">
 
         <ImageView
-            android:id="@+id/tvCrestUrl"
+            android:id="@+id/ivBestTeamLogo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
@@ -22,7 +21,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvBestTeam"
             tools:src="@drawable/ic_launcher_foreground"
-            tools:visibility="visible"/>
+            tools:visibility="visible" />
 
         <ProgressBar
             android:id="@+id/progress_bar"
@@ -45,17 +44,17 @@
             android:layout_marginTop="52dp"
             android:layout_marginEnd="16dp"
             android:gravity="center"
-            android:visibility="invisible"
             android:padding="5dp"
             android:textColor="@color/black"
             android:textSize="16dp"
+            android:visibility="invisible"
             app:layout_constrainedWidth="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.496"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="The best team in\nUEFA Champions League\nfrom 01-01-2000 to 01-01-2000\nis "
-            tools:visibility="visible"/>
+            tools:visibility="visible" />
 
         <TextView
             android:id="@+id/tvBestTeam"
@@ -63,13 +62,13 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             android:textColor="@color/black"
-            android:visibility="invisible"
             android:textSize="24dp"
+            android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvCompetitionNameAndDates"
             tools:text="Real Madrid"
-            tools:visibility="visible"/>
+            tools:visibility="visible" />
 
         <TextView
             android:id="@+id/tvFounded"
@@ -78,16 +77,16 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="8dp"
-            android:visibility="invisible"
             android:gravity="end"
             android:textColor="@color/black"
+            android:visibility="invisible"
             app:layout_constrainedWidth="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toEndOf="@+id/textFounded"
-            app:layout_constraintTop_toBottomOf="@+id/tvCrestUrl"
+            app:layout_constraintTop_toBottomOf="@+id/ivBestTeamLogo"
             tools:text="2004"
-            tools:visibility="visible"/>
+            tools:visibility="visible" />
 
         <TextView
             android:id="@+id/tvVenue"
@@ -95,16 +94,16 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginEnd="8dp"
-            android:visibility="invisible"
             android:gravity="end"
             android:textColor="@color/black"
+            android:visibility="invisible"
             app:layout_constrainedWidth="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toEndOf="@+id/textStadium"
             app:layout_constraintTop_toBottomOf="@+id/tvFounded"
             tools:text="Santiago Bernabéu"
-            tools:visibility="visible"/>
+            tools:visibility="visible" />
 
         <TextView
             android:id="@+id/tvWebsite"
@@ -112,16 +111,16 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginEnd="8dp"
-            android:visibility="invisible"
             android:gravity="end"
             android:textColor="@color/black"
+            android:visibility="invisible"
             app:layout_constrainedWidth="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toEndOf="@+id/textWebSite"
             app:layout_constraintTop_toBottomOf="@+id/vUnderLine1"
             tools:text="https://www.realmadrid.com/"
-            tools:visibility="visible"/>
+            tools:visibility="visible" />
 
         <TextView
             android:id="@+id/textFounded"
@@ -129,193 +128,193 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="24dp"
-            android:visibility="invisible"
             android:text="@string/textFounded"
             android:textColor="@color/black"
+            android:visibility="invisible"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvCrestUrl"
-            tools:visibility="visible"/>
+            app:layout_constraintTop_toBottomOf="@+id/ivBestTeamLogo"
+            tools:visibility="visible" />
 
         <TextView
             android:id="@+id/textStadium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:visibility="invisible"
             android:text="@string/textVenue"
             android:textColor="@color/black"
+            android:visibility="invisible"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/progress_bar"
-            tools:visibility="visible"/>
+            tools:visibility="visible" />
 
         <TextView
             android:id="@+id/textWebSite"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:visibility="invisible"
             android:text="@string/textWebSite"
             android:textColor="@color/black"
+            android:visibility="invisible"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/vUnderLine1"
-            tools:visibility="visible"/>
+            tools:visibility="visible" />
 
         <TextView
             android:id="@+id/textShortName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:visibility="invisible"
             android:text="@string/textShortName"
             android:textColor="@color/black"
+            android:visibility="invisible"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/vUnderLine2"
-            tools:visibility="visible"/>
+            tools:visibility="visible" />
 
         <TextView
             android:id="@+id/tvShortName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/black"
             android:layout_marginStart="32dp"
             android:layout_marginEnd="8dp"
-            android:visibility="invisible"
             android:gravity="end"
+            android:textColor="@color/black"
+            android:visibility="invisible"
             app:layout_constrainedWidth="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toEndOf="@+id/textShortName"
             app:layout_constraintTop_toBottomOf="@+id/vUnderLine2"
             tools:text="M'gladbach"
-            tools:visibility="visible"/>
+            tools:visibility="visible" />
 
         <TextView
             android:id="@+id/tvTla"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/black"
             android:layout_marginStart="32dp"
             android:layout_marginEnd="8dp"
-            android:visibility="invisible"
             android:gravity="end"
+            android:textColor="@color/black"
+            android:visibility="invisible"
             app:layout_constrainedWidth="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toEndOf="@+id/textTLA"
             app:layout_constraintTop_toBottomOf="@+id/vUnderLine3"
             tools:text="BMG"
-            tools:visibility="visible"/>
+            tools:visibility="visible" />
 
         <TextView
             android:id="@+id/textTLA"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:visibility="invisible"
             android:text="@string/textTLA"
             android:textColor="@color/black"
+            android:visibility="invisible"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/vUnderLine3"
-            tools:visibility="visible"/>
+            tools:visibility="visible" />
 
         <TextView
             android:id="@+id/textPhone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:visibility="invisible"
             android:text="@string/textPhone"
             android:textColor="@color/black"
+            android:visibility="invisible"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/vUnderLine4"
-            tools:visibility="visible"/>
+            tools:visibility="visible" />
 
         <TextView
             android:id="@+id/tvPhone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/black"
             android:layout_marginStart="32dp"
             android:layout_marginEnd="8dp"
-            android:visibility="invisible"
             android:gravity="end"
+            android:textColor="@color/black"
+            android:visibility="invisible"
             app:layout_constrainedWidth="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toEndOf="@+id/textPhone"
             app:layout_constraintTop_toBottomOf="@+id/vUnderLine4"
             tools:text="+49 (02161) 92930"
-            tools:visibility="visible"/>
+            tools:visibility="visible" />
 
         <TextView
             android:id="@+id/textClubColors"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:visibility="invisible"
             android:text="@string/textClubColors"
             android:textColor="@color/black"
+            android:visibility="invisible"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/vUnderLine5"
-            tools:visibility="visible"/>
+            tools:visibility="visible" />
 
         <TextView
             android:id="@+id/tvClubColors"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/black"
             android:layout_marginStart="32dp"
             android:layout_marginEnd="8dp"
-            android:visibility="invisible"
             android:gravity="end"
+            android:textColor="@color/black"
+            android:visibility="invisible"
             app:layout_constrainedWidth="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toEndOf="@+id/textClubColors"
             app:layout_constraintTop_toBottomOf="@+id/vUnderLine5"
             tools:text="Black / White / Green"
-            tools:visibility="visible"/>
+            tools:visibility="visible" />
 
         <TextView
             android:id="@+id/textEmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:visibility="invisible"
             android:text="@string/textEmail"
             android:textColor="@color/black"
+            android:visibility="invisible"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/vUnderLine6"
-            tools:visibility="visible"/>
+            tools:visibility="visible" />
 
         <TextView
             android:id="@+id/tvEmail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/black"
             android:layout_marginStart="32dp"
             android:layout_marginEnd="8dp"
-            android:visibility="invisible"
             android:gravity="end"
+            android:textColor="@color/black"
+            android:visibility="invisible"
             app:layout_constrainedWidth="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toEndOf="@+id/textEmail"
             app:layout_constraintTop_toBottomOf="@+id/vUnderLine6"
             tools:text="info@borussia.de"
-            tools:visibility="visible"/>
+            tools:visibility="visible" />
 
         <TextView
             android:id="@+id/textAddress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:visibility="invisible"
             android:text="@string/textAddress"
             android:textColor="@color/black"
+            android:visibility="invisible"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/vUnderLine7"
-            tools:visibility="visible"/>
+            tools:visibility="visible" />
 
         <TextView
             android:id="@+id/tvAddress"
@@ -323,16 +322,16 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginEnd="8dp"
-            android:visibility="invisible"
             android:gravity="end"
-            app:layout_constrainedWidth="true"
             android:textColor="@color/black"
+            android:visibility="invisible"
+            app:layout_constrainedWidth="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toEndOf="@+id/textAddress"
             app:layout_constraintTop_toBottomOf="@+id/vUnderLine7"
             tools:text="Hennes-Weisweiler-Allee 1 Mönchengladbach 41179"
-            tools:visibility="visible"/>
+            tools:visibility="visible" />
 
         <View
             android:id="@+id/vUnderLine"
@@ -344,7 +343,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textFounded"
-            tools:visibility="visible"/>
+            tools:visibility="visible" />
 
         <View
             android:id="@+id/vUnderLine1"
@@ -355,7 +354,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvVenue"
-            tools:visibility="visible"/>
+            tools:visibility="visible" />
 
         <View
             android:id="@+id/vUnderLine2"
@@ -366,7 +365,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvWebsite"
-            tools:visibility="visible"/>
+            tools:visibility="visible" />
 
         <View
             android:id="@+id/vUnderLine3"
@@ -377,7 +376,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvShortName"
-            tools:visibility="visible"/>
+            tools:visibility="visible" />
 
         <View
             android:id="@+id/vUnderLine4"
@@ -388,7 +387,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvTla"
-            tools:visibility="visible"/>
+            tools:visibility="visible" />
 
         <View
             android:id="@+id/vUnderLine5"
@@ -399,7 +398,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvPhone"
-            tools:visibility="visible"/>
+            tools:visibility="visible" />
 
         <View
             android:id="@+id/vUnderLine6"
@@ -410,7 +409,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvClubColors"
-            tools:visibility="visible"/>
+            tools:visibility="visible" />
 
         <View
             android:id="@+id/vUnderLine7"
@@ -421,7 +420,18 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvEmail"
-            tools:visibility="visible"/>
+            tools:visibility="visible" />
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/group_info_competition_and_best_team"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            app:constraint_referenced_ids="ivBestTeamLogo,tvCompetitionNameAndDates,tvBestTeam,tvFounded,
+            tvVenue,tvWebsite,textFounded,textStadium,textWebSite,textShortName,tvShortName,tvTla,
+            textTLA,textPhone,tvPhone,textClubColors,tvClubColors,textEmail,tvEmail,textAddress,
+            tvAddress,vUnderLine,vUnderLine1,vUnderLine2,vUnderLine3,vUnderLine4,vUnderLine5,
+            vUnderLine6,vUnderLine7" />
 
         <include
             layout="@layout/layout_offline_banner"

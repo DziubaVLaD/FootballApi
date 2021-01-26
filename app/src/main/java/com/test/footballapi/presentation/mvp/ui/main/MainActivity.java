@@ -18,23 +18,41 @@ import com.test.footballapi.presentation.base.BaseMvpActivity;
 import com.test.footballapi.presentation.mvp.presenter.main.MainPresenter;
 import com.test.footballapi.presentation.mvp.presenter.main.MainView;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class MainActivity extends BaseMvpActivity<MainPresenter> implements MainView, View.OnClickListener {
 
-    private TextView tvCompetitionName;
-    private TextView tvBestTeam;
-    private ImageView ivBestTeamLogo;
-    private TextView tvFounded;
-    private TextView tvVenue;
-    private TextView tvAddress;
-    private TextView tvTLA;
-    private TextView tvClubColors;
-    private TextView tvEmail;
-    private TextView tvShortName;
-    private TextView tvPhone;
-    private TextView tvWebsite;
-    private View progressBar;
-    private Group groupInfoCompetitionAndBestTeam;
-    private View offlineBanner;
+    @BindView(R.id.tvCompetitionNameAndDates)
+    TextView tvCompetitionName;
+    @BindView(R.id.tvBestTeam)
+    TextView tvBestTeam;
+    @BindView(R.id.ivBestTeamLogo)
+    ImageView ivBestTeamLogo;
+    @BindView(R.id.tvFounded)
+    TextView tvFounded;
+    @BindView(R.id.tvVenue)
+    TextView tvVenue;
+    @BindView(R.id.tvAddress)
+    TextView tvAddress;
+    @BindView(R.id.tvTla)
+    TextView tvTLA;
+    @BindView(R.id.tvClubColors)
+    TextView tvClubColors;
+    @BindView(R.id.tvEmail)
+    TextView tvEmail;
+    @BindView(R.id.tvShortName)
+    TextView tvShortName;
+    @BindView(R.id.tvPhone)
+    TextView tvPhone;
+    @BindView(R.id.tvWebsite)
+    TextView tvWebsite;
+    @BindView(R.id.progress_bar)
+    View progressBar;
+    @BindView(R.id.group_info_competition_and_best_team)
+    Group groupInfoCompetitionAndBestTeam;
+    @BindView(R.id.view_offline_banner)
+    View offlineBanner;
     private String websiteTeam;
     private String competitionNameTeam;
     private String clubColorsTeam;
@@ -54,21 +72,7 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        tvBestTeam = findViewById(R.id.tvBestTeam);
-        tvAddress = findViewById(R.id.tvAddress);
-        tvTLA = findViewById(R.id.tvTla);
-        tvEmail = findViewById(R.id.tvEmail);
-        tvShortName = findViewById(R.id.tvShortName);
-        tvPhone = findViewById(R.id.tvPhone);
-        ivBestTeamLogo = findViewById(R.id.tvCrestUrl);
-        tvClubColors = findViewById(R.id.tvClubColors);
-        tvFounded = findViewById(R.id.tvFounded);
-        tvVenue = findViewById(R.id.tvVenue);
-        tvCompetitionName = findViewById(R.id.tvCompetitionNameAndDates);
-        progressBar = findViewById(R.id.progress_bar);
-        offlineBanner = findViewById(R.id.view_offline_banner);
-        tvWebsite = findViewById(R.id.tvWebsite);
-        groupInfoCompetitionAndBestTeam = findViewById(R.id.group_info_competition_and_best_team);
+        ButterKnife.bind(this);
         presenter.onCreate();
         if (savedInstanceState == null) {
             presenter.onStart();

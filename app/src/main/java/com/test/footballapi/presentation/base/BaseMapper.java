@@ -11,8 +11,6 @@ public abstract class BaseMapper<T> {
     public MappersFactory getMapperFactory() {
         mapper = provideMapper();
         return MappersFactory.getInstance(App.getInstance().getMatchesMapper(),
-                App.getInstance().getWinnerTeamMapper(),
-                App.getInstance().getScoreMapper(),
                 App.getInstance().getSeasonsMapper());
     }
 }

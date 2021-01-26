@@ -23,15 +23,12 @@ public class CalculateDateInterval {
         }
     }
 
-    public static String calculateFirstDay(String startDateCompetitionString) throws ParseException {
-        Date startCompetitionDate = sdf.parse(startDateCompetitionString);
-        if (Objects.requireNonNull(startCompetitionDate).compareTo(currentDate) < 0) {
-            Calendar cal = Calendar.getInstance();
-            cal.add(Calendar.DATE, -30);
-            return sdf.format(new Date(cal.getTimeInMillis()));
-        } else {
-            return convertDateToString(startCompetitionDate);
-        }
+    public static String calculateFirstDay(String lastDayCompetition) throws ParseException {
+        Date lastDayCompetitionDate = sdf.parse(lastDayCompetition);
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(Objects.requireNonNull(lastDayCompetitionDate));
+        cal.add(Calendar.DATE, -30);
+        return sdf.format(cal.getTime());
     }
 
     private static String convertDateToString(Date date) {

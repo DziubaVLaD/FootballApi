@@ -98,15 +98,7 @@ public class App extends Application {
         return matchesMapper;
     }
 
-    public ScoreMapper getScoreMapper() {
-        return scoreMapper;
-    }
-
     public SeasonsMapper getSeasonsMapper() {
         return seasonsMapper;
-    }
-
-    public WinnerTeamMapper getWinnerTeamMapper() {
-        return winnerTeamMapper;
     }
 }

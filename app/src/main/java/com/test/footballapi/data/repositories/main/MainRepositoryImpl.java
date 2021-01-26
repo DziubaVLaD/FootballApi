@@ -8,6 +8,7 @@ import com.test.footballapi.data.model.client.Team;
 import com.test.footballapi.data.model.mapper.AboutCompetitionMapper;
 import com.test.footballapi.data.model.mapper.AllMatchesForParticularCompetitionMapper;
 import com.test.footballapi.data.model.mapper.BestTeamMapper;
+import com.test.footballapi.presentation.base.BaseMapper;
 import com.test.footballapi.utils.AppConstants;
 
 import java.util.List;
@@ -16,17 +17,17 @@ import io.reactivex.Flowable;
 import io.reactivex.Single;
 
 public class MainRepositoryImpl implements MainRepository {
-    private DataManager dataManager;
-    private AllMatchesForParticularCompetitionMapper allMatchesForParticularCompetitionMapper;
-    private BestTeamMapper bestTeamMapper;
-    private AboutCompetitionMapper aboutCompetitionMapper;
+    private final DataManager dataManager;
+    private final AllMatchesForParticularCompetitionMapper allMatchesForParticularCompetitionMapper;
+    private final BestTeamMapper bestTeamMapper;
+    private final AboutCompetitionMapper aboutCompetitionMapper;
 
 
-    public MainRepositoryImpl(DataManager dataManager) {
+    public MainRepositoryImpl(DataManager dataManager, AllMatchesForParticularCompetitionMapper allMatchesForParticularCompetitionMapper, BestTeamMapper bestTeamMapper, AboutCompetitionMapper aboutCompetitionMapper) {
         this.dataManager = dataManager;
-        allMatchesForParticularCompetitionMapper = new AllMatchesForParticularCompetitionMapper();
-        bestTeamMapper = new BestTeamMapper();
-        aboutCompetitionMapper = new AboutCompetitionMapper();
+        this.allMatchesForParticularCompetitionMapper = allMatchesForParticularCompetitionMapper;
+        this.bestTeamMapper = bestTeamMapper;
+        this.aboutCompetitionMapper = aboutCompetitionMapper;
     }
 
     @Override
@@ -46,7 +47,7 @@ public class MainRepositoryImpl implements MainRepository {
     }
 
     @Override
-    public Single<AllMatchesForParticularCompetition> getBestTeamLast30Days(String startDateCompetition, String endDateCompetition, int idCompetition) {
+    public Single<AllMatchesForParticularCompetition> getBestTeam(String startDateCompetition, String endDateCompetition, int idCompetition) {
         return dataManager.getAllMatchesForParticularCompetition(AppConstants.X_AUTH_TOKEN, idCompetition, startDateCompetition, endDateCompetition)
                 .map(allMatchesResponse -> allMatchesForParticularCompetitionMapper.transform(allMatchesResponse));
     }

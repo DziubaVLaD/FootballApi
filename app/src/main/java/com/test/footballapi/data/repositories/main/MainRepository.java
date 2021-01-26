@@ -15,7 +15,7 @@ public interface MainRepository {
 
     Flowable<NetworkEvent> subscribeOnNetworkEvents();
 
-    Single<AllMatchesForParticularCompetition> getBestTeamLast30Days(String startDateCompetition, String endDateCompetition, int idCompetition);
+    Single<AllMatchesForParticularCompetition> getBestTeam(String startDateCompetition, String endDateCompetition, int idCompetition);
 
     Single<Team> getInfoAboutBestTeam(List<Integer> idBestTeamsList);
 

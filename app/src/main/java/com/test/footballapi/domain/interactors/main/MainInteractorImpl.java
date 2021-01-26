@@ -15,7 +15,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
 public class MainInteractorImpl implements MainInteractor {
-    private MainRepository mainRepository;
+    private final MainRepository mainRepository;
     private String startDateCompetition;
     private String endDateCompetition;
     private int idCompetition;
@@ -70,7 +70,7 @@ public class MainInteractorImpl implements MainInteractor {
 
     @Override
     public Single<AllMatchesForParticularCompetition> getBestTeam() {
-        return mainRepository.getBestTeamLast30Days(startDateCompetition, endDateCompetition, idCompetition)
+        return mainRepository.getBestTeam(startDateCompetition, endDateCompetition, idCompetition)
                 .map(allMatchesForParticularCompetition -> {
                     for (Matches matches : allMatchesForParticularCompetition.getMatches()) {
                         CalculateWinnerTeam.checkWinnerTeam(matches);

@@ -40,6 +40,9 @@ public abstract class BaseMvpActivity<T extends Presenter> extends AppCompatActi
     public abstract T providePresenter();
 
     public PresenterFactory getPresenterFactory() {
-        return PresenterFactory.getInstance(App.getInstance().getDataManager());
+        return PresenterFactory.getInstance(App.getInstance().getDataManager(),
+                App.getInstance().getAllMatchesForParticularCompetitionMapper(),
+                App.getInstance().getBestTeamMapper(),
+                App.getInstance().getAboutCompetitionMapper());
     }
 }

@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 public class CalculateWinnerTeam {
-    private static Map<Integer, Integer> teamsHashMap = new HashMap<>();
+    private static final Map<Integer, Integer> teamsHashMap = new HashMap<>();
     private static final String AWAY_TEAM = "AWAY_TEAM";
     private static final String HOME_TEAM = "HOME_TEAM";
 

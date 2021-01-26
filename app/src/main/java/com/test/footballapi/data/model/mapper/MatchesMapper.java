@@ -7,8 +7,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MatchesMapper {
-    WinnerTeamMapper winnerTeamMapper = new WinnerTeamMapper();
-    ScoreMapper scoreMapper = new ScoreMapper();
+    private WinnerTeamMapper winnerTeamMapper;
+    private ScoreMapper scoreMapper;
+
+    public MatchesMapper(WinnerTeamMapper winnerTeamMapper, ScoreMapper scoreMapper) {
+        this.winnerTeamMapper = winnerTeamMapper;
+        this.scoreMapper = scoreMapper;
+    }
 
     public List<Matches> transform(List<MatchesResponse> matchesResponseList) {
         List<Matches> matchesList = new ArrayList<>();

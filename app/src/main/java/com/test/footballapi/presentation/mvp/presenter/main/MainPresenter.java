@@ -7,7 +7,7 @@ import io.reactivex.disposables.Disposable;
 
 public class MainPresenter extends BasePresenter<MainView> {
 
-    private MainInteractor mainInteractor;
+    private final MainInteractor mainInteractor;
     private Disposable networkDisposable;
     private Boolean updateInfoAfterInternetConnect = false;
 

@@ -20,7 +20,6 @@ import com.test.footballapi.presentation.mvp.presenter.main.MainView;
 
 public class MainActivity extends BaseMvpActivity<MainPresenter> implements MainView, View.OnClickListener {
 
-
     private TextView tvCompetitionName;
     private TextView tvBestTeam;
     private ImageView ivBestTeamLogo;
@@ -54,7 +53,6 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_main);
         tvBestTeam = findViewById(R.id.tvBestTeam);
         tvAddress = findViewById(R.id.tvAddress);
@@ -147,7 +145,6 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
     @Override
     protected void onSaveInstanceState(@NonNull Bundle savedInstanceState) {
         super.onSaveInstanceState(savedInstanceState);
-
         savedInstanceState.putString("website", websiteTeam);
         savedInstanceState.putString("bestTeam", bestTeam);
         savedInstanceState.putString("address", addressTeam);
@@ -184,7 +181,6 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
         if (savedInstanceState.getString("crestUrl") != null) {
             GlideToVectorYou.justLoadImageAsBackground(this, Uri.parse(savedInstanceState.getString("crestUrl")), ivBestTeamLogo);
         }
-
         tvBestTeam.setText(bestTeam);
         tvFounded.setText(foundedTeam);
         tvVenue.setText(venueTeam);

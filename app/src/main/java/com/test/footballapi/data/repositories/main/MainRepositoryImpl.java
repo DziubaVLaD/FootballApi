@@ -42,19 +42,19 @@ public class MainRepositoryImpl implements MainRepository {
     @Override
     public Single<CompetitionInfo> getInfoAboutCompetition() {
         return dataManager.getInfoAboutCompetition(AppConstants.X_AUTH_TOKEN, AppConstants.ID_BUNDESLIGA)
-                .map(competitionInfoResponse -> aboutCompetitionMapper.transform(competitionInfoResponse));
+                .map(aboutCompetitionMapper::transform);
     }
 
     @Override
     public Single<AllMatchesForParticularCompetition> getBestTeam(String startDateCompetition, String endDateCompetition, int idCompetition) {
         return dataManager.getAllMatchesForParticularCompetition(AppConstants.X_AUTH_TOKEN, idCompetition, startDateCompetition, endDateCompetition)
-                .map(allMatchesResponse -> allMatchesForParticularCompetitionMapper.transform(allMatchesResponse));
+                .map(allMatchesForParticularCompetitionMapper::transform);
     }
 
     @Override
     public Single<Team> getInfoAboutBestTeam(List<Integer> idBestTeamsList) {
         return dataManager.getInfoAboutBestTeam(AppConstants.X_AUTH_TOKEN, idBestTeamsList.get(0))
-                .map(teamResponse -> bestTeamMapper.transform(teamResponse));
+                .map(bestTeamMapper::transform);
     }
 
     @Override

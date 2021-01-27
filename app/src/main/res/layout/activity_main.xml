@@ -53,7 +53,7 @@
             app:layout_constraintHorizontal_bias="0.496"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="The best team in\nUEFA Champions League\nfrom 01-01-2000 to 01-01-2000\nis "
+            tools:text="The best teamInfo in\nUEFA Champions League\nfrom 01-01-2000 to 01-01-2000\nis "
             tools:visibility="visible" />
 
         <TextView

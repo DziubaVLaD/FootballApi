@@ -44,15 +44,9 @@ public class MainPresenter extends BasePresenter<MainView> {
     }
 
     public void getBestTeam() {
-        addDisposable(mainInteractor.getBestTeam()
-                .doOnSubscribe(it -> {
-                    sendToView(MainView::lockOrientationScreen);
-                })
-                .doOnSuccess(allMatchesForParticularCompetition -> {
-                })
-                .subscribe(allMatchesForParticularCompetition -> {
-                    getInfoAboutBestTeam();
-                }, e -> {
+        addDisposable(mainInteractor.getAllMatchesForParticularCompetition()
+                .doOnSubscribe(it -> sendToView(MainView::lockOrientationScreen))
+                .subscribe(allMatchesForParticularCompetition -> getInfoAboutBestTeam(), e -> {
                     sendToView(view -> view.showError(e.getMessage()));
                     sendToView(MainView::hideProgress);
                     sendToView(MainView::unLockOrientationScreen);
@@ -60,7 +54,7 @@ public class MainPresenter extends BasePresenter<MainView> {
     }
 
     public void getInfoAboutBestTeam() {
-        addDisposable(mainInteractor.getInfoAboutBestTeam()
+        addDisposable(mainInteractor.getBestTeamInfo()
                 .doOnSubscribe(it -> {
                     sendToView(MainView::lockOrientationScreen);
                 })
@@ -79,7 +73,7 @@ public class MainPresenter extends BasePresenter<MainView> {
     }
 
     public void getInfoAboutCompetition() {
-        addDisposable(mainInteractor.getInfoAboutCompetition()
+        addDisposable(mainInteractor.getCompetitionInfo()
                 .doOnSubscribe(it -> {
                     sendToView(MainView::lockOrientationScreen);
                     sendToView(MainView::showProgress);

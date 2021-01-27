@@ -3,7 +3,7 @@ package com.test.footballapi.data;
 import com.test.footballapi.data.model.AllMatchesForParticularCompetitionResponse;
 import com.test.footballapi.data.model.CompetitionInfoResponse;
 import com.test.footballapi.data.model.NetworkEvent;
-import com.test.footballapi.data.model.TeamResponse;
+import com.test.footballapi.data.model.TeamInfoResponse;
 import com.test.footballapi.data.network.NetworkManager;
 import com.test.footballapi.data.network.RestService;
 
@@ -27,8 +27,8 @@ public class DataDelegate implements DataManager {
     }
 
     @Override
-    public Single<CompetitionInfoResponse> getInfoAboutCompetition(String token, int id) {
-        return restService.getInfoAboutCompetition(token, id);
+    public Single<CompetitionInfoResponse> getCompetitionInfo(String token, int id) {
+        return restService.getCompetitionInfo(token, id);
     }
 
     @Override
@@ -37,8 +37,8 @@ public class DataDelegate implements DataManager {
     }
 
     @Override
-    public Single<TeamResponse> getInfoAboutBestTeam(String token, int id) {
-        return restService.getInfoAboutBestTeam(token, id);
+    public Single<TeamInfoResponse> getBestTeamInfo(String token, int id) {
+        return restService.getBestTeamInfo(token, id);
     }
 
     @Override

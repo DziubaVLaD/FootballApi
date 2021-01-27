@@ -4,10 +4,10 @@ import com.test.footballapi.data.model.CompetitionInfoResponse;
 import com.test.footballapi.data.model.client.CompetitionInfo;
 import com.test.footballapi.presentation.base.BaseMapper;
 
-public class AboutCompetitionMapper extends BaseMapper {
+public class CompetitionInfoMapper extends BaseMapper {
     private final SeasonsMapper seasonsMapper;
 
-    public AboutCompetitionMapper(SeasonsMapper seasonsMapper) {
+    public CompetitionInfoMapper(SeasonsMapper seasonsMapper) {
         this.seasonsMapper = seasonsMapper;
     }
 
@@ -20,7 +20,7 @@ public class AboutCompetitionMapper extends BaseMapper {
     }
 
     @Override
-    public AboutCompetitionMapper provideMapper() {
-        return getMapperFactory().create(AboutCompetitionMapper.class);
+    public CompetitionInfoMapper provideMapper() {
+        return getMapperFactory().create(CompetitionInfoMapper.class);
     }
 }

@@ -4,10 +4,10 @@ import com.test.footballapi.data.model.NetworkEvent;
 import com.test.footballapi.data.model.client.AllMatchesForParticularCompetition;
 import com.test.footballapi.data.model.client.CompetitionInfo;
 import com.test.footballapi.data.model.client.Matches;
-import com.test.footballapi.data.model.client.Team;
+import com.test.footballapi.data.model.client.TeamInfo;
 import com.test.footballapi.data.repositories.main.MainRepository;
+import com.test.footballapi.utils.CalculateBestTeam;
 import com.test.footballapi.utils.CalculateDateInterval;
-import com.test.footballapi.utils.CalculateWinnerTeam;
 
 import io.reactivex.Flowable;
 import io.reactivex.Single;
@@ -55,8 +55,8 @@ public class MainInteractorImpl implements MainInteractor {
     }
 
     @Override
-    public Single<CompetitionInfo> getInfoAboutCompetition() {
-        return mainRepository.getInfoAboutCompetition()
+    public Single<CompetitionInfo> getCompetitionInfo() {
+        return mainRepository.getCompetitionInfo()
                 .map(competitionInfo -> {
                     idCompetition = competitionInfo.getId();
                     endDateCompetition = CalculateDateInterval.calculateLastDay(competitionInfo.getSeasons().get(0).getEndDate());
@@ -68,11 +68,11 @@ public class MainInteractorImpl implements MainInteractor {
     }
 
     @Override
-    public Single<AllMatchesForParticularCompetition> getBestTeam() {
-        return mainRepository.getBestTeam(startDateCompetition, endDateCompetition, idCompetition)
+    public Single<AllMatchesForParticularCompetition> getAllMatchesForParticularCompetition() {
+        return mainRepository.getAllMatchesForParticularCompetition(startDateCompetition, endDateCompetition, idCompetition)
                 .map(allMatchesForParticularCompetition -> {
                     for (Matches matches : allMatchesForParticularCompetition.getMatches()) {
-                        CalculateWinnerTeam.checkWinnerTeam(matches);
+                        CalculateBestTeam.calculateWinnerTeam(matches);
                     }
                     return allMatchesForParticularCompetition;
                 })
@@ -81,8 +81,8 @@ public class MainInteractorImpl implements MainInteractor {
     }
 
     @Override
-    public Single<Team> getInfoAboutBestTeam() {
-        return mainRepository.getInfoAboutBestTeam(CalculateWinnerTeam.bestTeamList())
+    public Single<TeamInfo> getBestTeamInfo() {
+        return mainRepository.getBestTeamInfo(CalculateBestTeam.bestTeamsList())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
     }

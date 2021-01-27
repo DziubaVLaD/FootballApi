@@ -5,13 +5,13 @@ import android.util.Log;
 
 import com.test.footballapi.data.DataDelegate;
 import com.test.footballapi.data.DataManager;
-import com.test.footballapi.data.model.mapper.AboutCompetitionMapper;
 import com.test.footballapi.data.model.mapper.AllMatchesForParticularCompetitionMapper;
 import com.test.footballapi.data.model.mapper.BestTeamMapper;
+import com.test.footballapi.data.model.mapper.CompetitionInfoMapper;
 import com.test.footballapi.data.model.mapper.MatchesMapper;
 import com.test.footballapi.data.model.mapper.ScoreMapper;
 import com.test.footballapi.data.model.mapper.SeasonsMapper;
-import com.test.footballapi.data.model.mapper.WinnerTeamMapper;
+import com.test.footballapi.data.model.mapper.TeamNameMapper;
 import com.test.footballapi.data.network.ApiConfig;
 import com.test.footballapi.data.network.NetworkManager;
 import com.test.footballapi.data.network.RestService;
@@ -26,9 +26,9 @@ public class App extends Application {
     private DataManager dataManager;
     private AllMatchesForParticularCompetitionMapper allMatchesForParticularCompetitionMapper;
     private BestTeamMapper bestTeamMapper;
-    private AboutCompetitionMapper aboutCompetitionMapper;
+    private CompetitionInfoMapper competitionInfoMapper;
     private MatchesMapper matchesMapper;
-    private WinnerTeamMapper winnerTeamMapper;
+    private TeamNameMapper teamNameMapper;
     private ScoreMapper scoreMapper;
     private SeasonsMapper seasonsMapper;
 
@@ -62,11 +62,11 @@ public class App extends Application {
         });
 
         bestTeamMapper = new BestTeamMapper();
-        winnerTeamMapper = new WinnerTeamMapper();
+        teamNameMapper = new TeamNameMapper();
         scoreMapper = new ScoreMapper();
         seasonsMapper = new SeasonsMapper();
-        matchesMapper = new MatchesMapper(winnerTeamMapper, scoreMapper);
-        aboutCompetitionMapper = new AboutCompetitionMapper(seasonsMapper);
+        matchesMapper = new MatchesMapper(teamNameMapper, scoreMapper);
+        competitionInfoMapper = new CompetitionInfoMapper(seasonsMapper);
         allMatchesForParticularCompetitionMapper = new AllMatchesForParticularCompetitionMapper(matchesMapper);
         dataManager = new DataDelegate(
                 ApiConfig.getRetrofit().create(RestService.class),
@@ -90,8 +90,8 @@ public class App extends Application {
         return bestTeamMapper;
     }
 
-    public AboutCompetitionMapper getAboutCompetitionMapper() {
-        return aboutCompetitionMapper;
+    public CompetitionInfoMapper getCompetitionInfoMapper() {
+        return competitionInfoMapper;
     }
 
     public MatchesMapper getMatchesMapper() {

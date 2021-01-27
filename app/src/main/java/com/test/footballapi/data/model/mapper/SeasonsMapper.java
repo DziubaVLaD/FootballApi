@@ -18,7 +18,6 @@ public class SeasonsMapper {
     private Seasons transform(SeasonsResponse seasonsResponse) {
         Seasons seasons = new Seasons();
         seasons.setEndDate(seasonsResponse.getEndDate());
-        seasons.setStartDate(seasonsResponse.getStartDate());
         seasons.setId(seasonsResponse.getId());
         return seasons;
     }

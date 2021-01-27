@@ -13,6 +13,6 @@
 
     <string name="text_no_internet">No Internet Connection</string>
 
-    <string name="text_competitionNameAndDates">Football team which won most matches in\n%1$s\nfrom %2$s to %3$s\nis: </string>
+    <string name="text_competitionNameAndDates">Football teamInfo which won most matches in\n%1$s\nfrom %2$s to %3$s\nis: </string>
 
 </resources>

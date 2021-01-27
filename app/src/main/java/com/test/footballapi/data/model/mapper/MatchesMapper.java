@@ -7,11 +7,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MatchesMapper {
-    private final WinnerTeamMapper winnerTeamMapper;
+    private final TeamNameMapper teamNameMapper;
     private final ScoreMapper scoreMapper;
 
-    public MatchesMapper(WinnerTeamMapper winnerTeamMapper, ScoreMapper scoreMapper) {
-        this.winnerTeamMapper = winnerTeamMapper;
+    public MatchesMapper(TeamNameMapper teamNameMapper, ScoreMapper scoreMapper) {
+        this.teamNameMapper = teamNameMapper;
         this.scoreMapper = scoreMapper;
     }
 
@@ -25,8 +25,8 @@ public class MatchesMapper {
 
     private Matches transform(MatchesResponse matchesResponse) {
         Matches matches = new Matches();
-        matches.setWinneAwayTeam(winnerTeamMapper.transform(matchesResponse.getAwayTeam()));
-        matches.setWinnerHomeTeam(winnerTeamMapper.transform(matchesResponse.getHomeTeam()));
+        matches.setWinneAwayTeam(teamNameMapper.transform(matchesResponse.getAwayTeam()));
+        matches.setWinnerHomeTeam(teamNameMapper.transform(matchesResponse.getHomeTeam()));
         matches.setScore(scoreMapper.transform(matchesResponse.getScore()));
         return matches;
     }

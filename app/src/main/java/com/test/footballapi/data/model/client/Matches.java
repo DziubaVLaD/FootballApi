@@ -4,8 +4,8 @@ import java.util.Objects;
 
 public class Matches {
     private Score score;
-    private WinnerTeam homeTeam;
-    private WinnerTeam awayTeam;
+    private TeamName homeTeam;
+    private TeamName awayTeam;
 
     public Score getScore() {
         return score;
@@ -15,19 +15,19 @@ public class Matches {
         this.score = score;
     }
 
-    public WinnerTeam getWinnerHomeTeam() {
+    public TeamName getWinnerHomeTeam() {
         return homeTeam;
     }
 
-    public void setWinnerHomeTeam(WinnerTeam winnerTeam) {
-        this.homeTeam = winnerTeam;
+    public void setWinnerHomeTeam(TeamName teamName) {
+        this.homeTeam = teamName;
     }
 
-    public WinnerTeam getWinnerAwayTeam() {
+    public TeamName getWinnerAwayTeam() {
         return awayTeam;
     }
 
-    public void setWinneAwayTeam(WinnerTeam awayTeam) {
+    public void setWinneAwayTeam(TeamName awayTeam) {
         this.awayTeam = awayTeam;
     }
 

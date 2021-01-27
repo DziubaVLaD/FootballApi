@@ -1,23 +1,23 @@
 package com.test.footballapi.data.model.mapper;
 
-import com.test.footballapi.data.model.TeamResponse;
-import com.test.footballapi.data.model.client.Team;
+import com.test.footballapi.data.model.TeamInfoResponse;
+import com.test.footballapi.data.model.client.TeamInfo;
 
 public class BestTeamMapper {
-    public Team transform(TeamResponse teamResponse) {
-        Team team = new Team();
-        team.setCrestUrl(teamResponse.getCrestUrl());
-        team.setFounded(teamResponse.getFounded());
-        team.setId(teamResponse.getId());
-        team.setName(teamResponse.getName());
-        team.setVenue(teamResponse.getVenue());
-        team.setWebsite(teamResponse.getWebsite());
-        team.setAddress(teamResponse.getAddress());
-        team.setClubColors(teamResponse.getClubColors());
-        team.setEmail(teamResponse.getEmail());
-        team.setShortName(teamResponse.getShortName());
-        team.setTla(teamResponse.getTla());
-        team.setPhone(teamResponse.getPhone());
-        return team;
+    public TeamInfo transform(TeamInfoResponse teamInfoResponse) {
+        TeamInfo teamInfo = new TeamInfo();
+        teamInfo.setCrestUrl(teamInfoResponse.getCrestUrl());
+        teamInfo.setFounded(teamInfoResponse.getFounded());
+        teamInfo.setId(teamInfoResponse.getId());
+        teamInfo.setName(teamInfoResponse.getName());
+        teamInfo.setVenue(teamInfoResponse.getVenue());
+        teamInfo.setWebsite(teamInfoResponse.getWebsite());
+        teamInfo.setAddress(teamInfoResponse.getAddress());
+        teamInfo.setClubColors(teamInfoResponse.getClubColors());
+        teamInfo.setEmail(teamInfoResponse.getEmail());
+        teamInfo.setShortName(teamInfoResponse.getShortName());
+        teamInfo.setTla(teamInfoResponse.getTla());
+        teamInfo.setPhone(teamInfoResponse.getPhone());
+        return teamInfo;
     }
 }

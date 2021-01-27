@@ -3,15 +3,15 @@ package com.test.footballapi;
 import com.test.footballapi.data.model.AllMatchesForParticularCompetitionResponse;
 import com.test.footballapi.data.model.MatchesResponse;
 import com.test.footballapi.data.model.ScoreResponse;
-import com.test.footballapi.data.model.WinnerTeamResponse;
+import com.test.footballapi.data.model.TeamNameResponse;
 import com.test.footballapi.data.model.client.AllMatchesForParticularCompetition;
 import com.test.footballapi.data.model.client.Matches;
 import com.test.footballapi.data.model.client.Score;
-import com.test.footballapi.data.model.client.WinnerTeam;
+import com.test.footballapi.data.model.client.TeamName;
 import com.test.footballapi.data.model.mapper.AllMatchesForParticularCompetitionMapper;
 import com.test.footballapi.data.model.mapper.MatchesMapper;
 import com.test.footballapi.data.model.mapper.ScoreMapper;
-import com.test.footballapi.data.model.mapper.WinnerTeamMapper;
+import com.test.footballapi.data.model.mapper.TeamNameMapper;
 
 import org.junit.Test;
 
@@ -21,7 +21,7 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 
 public class TestMappers {
-    WinnerTeamMapper winnerTeamMapper;
+    TeamNameMapper teamNameMapper;
     AllMatchesForParticularCompetitionMapper allMatchesForParticularCompetitionMapper;
     ScoreMapper scoreMapper;
     MatchesMapper matchesMapper;
@@ -29,10 +29,10 @@ public class TestMappers {
     List<Matches> matchesList;
     MatchesResponse matchesResponse;
     Matches matches;
-    WinnerTeamResponse winnerHomeTeamResponse;
-    WinnerTeam winnerHomeTeam;
-    WinnerTeamResponse winnerAwayTeamResponse;
-    WinnerTeam winnerAwayTeam;
+    TeamNameResponse homeTeamNameResponse;
+    TeamName homeTeamName;
+    TeamNameResponse awayTeamNameResponse;
+    TeamName awayTeamName;
     AllMatchesForParticularCompetitionResponse allMatchesForParticularCompetitionResponse;
     AllMatchesForParticularCompetition allMatchesForParticularCompetition;
     ScoreResponse scoreResponse;
@@ -44,13 +44,13 @@ public class TestMappers {
     String teamWinner = "HOME_TEAM";
 
     @Test
-    public void testAllMatchesForParticularCompetitionMapper() {
-        winnerTeamMapper = new WinnerTeamMapper();
+    public void allMatchesForParticularCompetitionMapper_isCorrect() {
+        teamNameMapper = new TeamNameMapper();
         scoreMapper = new ScoreMapper();
-        getWinnerHomeTeamResponse(idHomeTeam, nameHomeTeam);
-        getWinnerHomeTeam(idHomeTeam, nameHomeTeam);
-        getWinnerAwayTeamResponse(idAwayTeam, nameAwayTeam);
-        getWinnerAwayTeam(idAwayTeam, nameAwayTeam);
+        getHomeTeamNameResponse(idHomeTeam, nameHomeTeam);
+        getHomeTeamName(idHomeTeam, nameHomeTeam);
+        getAwayTeamNameResponse(idAwayTeam, nameAwayTeam);
+        getAwayTeamName(idAwayTeam, nameAwayTeam);
         getScoreResponse(teamWinner);
         getScore(teamWinner);
         getMatchesResponse();
@@ -59,35 +59,35 @@ public class TestMappers {
         getMatchesList();
         getAllMatchesForParticularCompetitionResponse();
         getAllMatchesForParticularCompetition();
-        matchesMapper = new MatchesMapper(winnerTeamMapper, scoreMapper);
+        matchesMapper = new MatchesMapper(teamNameMapper, scoreMapper);
         allMatchesForParticularCompetitionMapper = new AllMatchesForParticularCompetitionMapper(matchesMapper);
 
         assertEquals(allMatchesForParticularCompetitionMapper.transform(allMatchesForParticularCompetitionResponse), allMatchesForParticularCompetition);
     }
 
 
-    private void getWinnerHomeTeamResponse(int homeTeamId, String nameHomeTeam) {
-        winnerHomeTeamResponse = new WinnerTeamResponse();
-        winnerHomeTeamResponse.setId(homeTeamId);
-        winnerHomeTeamResponse.setName(nameHomeTeam);
+    private void getHomeTeamNameResponse(int homeTeamId, String nameHomeTeam) {
+        homeTeamNameResponse = new TeamNameResponse();
+        homeTeamNameResponse.setId(homeTeamId);
+        homeTeamNameResponse.setName(nameHomeTeam);
     }
 
-    private void getWinnerHomeTeam(int homeTeamId, String nameHomeTeam) {
-        winnerHomeTeam = new WinnerTeam();
-        winnerHomeTeam.setId(homeTeamId);
-        winnerHomeTeam.setName(nameHomeTeam);
+    private void getHomeTeamName(int homeTeamId, String nameHomeTeam) {
+        homeTeamName = new TeamName();
+        homeTeamName.setId(homeTeamId);
+        homeTeamName.setName(nameHomeTeam);
     }
 
-    private void getWinnerAwayTeamResponse(int awayTeamId, String nameAwayTeam) {
-        winnerAwayTeamResponse = new WinnerTeamResponse();
-        winnerAwayTeamResponse.setId(awayTeamId);
-        winnerAwayTeamResponse.setName(nameAwayTeam);
+    private void getAwayTeamNameResponse(int awayTeamId, String nameAwayTeam) {
+        awayTeamNameResponse = new TeamNameResponse();
+        awayTeamNameResponse.setId(awayTeamId);
+        awayTeamNameResponse.setName(nameAwayTeam);
     }
 
-    private void getWinnerAwayTeam(int awayTeamId, String nameAwayTeam) {
-        winnerAwayTeam = new WinnerTeam();
-        winnerAwayTeam.setId(awayTeamId);
-        winnerAwayTeam.setName(nameAwayTeam);
+    private void getAwayTeamName(int awayTeamId, String nameAwayTeam) {
+        awayTeamName = new TeamName();
+        awayTeamName.setId(awayTeamId);
+        awayTeamName.setName(nameAwayTeam);
     }
 
     private void getScoreResponse(String teamWinner) {
@@ -103,15 +103,15 @@ public class TestMappers {
     private void getMatchesResponse() {
         matchesResponse = new MatchesResponse();
         matchesResponse.setScore(scoreResponse);
-        matchesResponse.setHomeTeam(winnerHomeTeamResponse);
-        matchesResponse.setAwayTeam(winnerAwayTeamResponse);
+        matchesResponse.setHomeTeam(homeTeamNameResponse);
+        matchesResponse.setAwayTeam(awayTeamNameResponse);
     }
 
     private void getMatches() {
         matches = new Matches();
         matches.setScore(score);
-        matches.setWinnerHomeTeam(winnerHomeTeam);
-        matches.setWinneAwayTeam(winnerAwayTeam);
+        matches.setWinnerHomeTeam(homeTeamName);
+        matches.setWinneAwayTeam(awayTeamName);
     }
 
     private void getMatchesListResponse() {

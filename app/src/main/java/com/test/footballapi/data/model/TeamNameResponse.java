@@ -2,7 +2,7 @@ package com.test.footballapi.data.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class WinnerTeamResponse {
+public class TeamNameResponse {
     @JsonProperty("id")
     private int id;
     @JsonProperty("name")

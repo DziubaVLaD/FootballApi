@@ -1,17 +1,31 @@
-package com.test.footballapi.data.model.client;
+package com.test.footballapi.data.model;
 
-public class Team {
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+public class TeamInfoResponse {
+    @JsonProperty
     private int id;
+    @JsonProperty
     private String name;
+    @JsonProperty
     private String shortName;
+    @JsonProperty
     private String tla;
+    @JsonProperty
     private String crestUrl;
+    @JsonProperty
     private String address;
+    @JsonProperty
     private String phone;
+    @JsonProperty
     private String website;
+    @JsonProperty
     private String email;
+    @JsonProperty
     private int founded;
+    @JsonProperty
     private String clubColors;
+    @JsonProperty
     private String venue;
 
     public int getId() {

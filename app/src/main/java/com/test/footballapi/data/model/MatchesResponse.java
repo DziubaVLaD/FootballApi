@@ -6,9 +6,9 @@ public class MatchesResponse {
     @JsonProperty("score")
     private ScoreResponse score;
     @JsonProperty("homeTeam")
-    private WinnerTeamResponse homeTeam;
+    private TeamNameResponse homeTeam;
     @JsonProperty("awayTeam")
-    private WinnerTeamResponse awayTeam;
+    private TeamNameResponse awayTeam;
 
     public ScoreResponse getScore() {
         return score;
@@ -18,19 +18,19 @@ public class MatchesResponse {
         this.score = score;
     }
 
-    public WinnerTeamResponse getHomeTeam() {
+    public TeamNameResponse getHomeTeam() {
         return homeTeam;
     }
 
-    public void setHomeTeam(WinnerTeamResponse homeTeam) {
+    public void setHomeTeam(TeamNameResponse homeTeam) {
         this.homeTeam = homeTeam;
     }
 
-    public WinnerTeamResponse getAwayTeam() {
+    public TeamNameResponse getAwayTeam() {
         return awayTeam;
     }
 
-    public void setAwayTeam(WinnerTeamResponse awayTeam) {
+    public void setAwayTeam(TeamNameResponse awayTeam) {
         this.awayTeam = awayTeam;
     }
 }

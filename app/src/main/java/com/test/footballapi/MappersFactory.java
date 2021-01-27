@@ -1,7 +1,7 @@
 package com.test.footballapi;
 
-import com.test.footballapi.data.model.mapper.AboutCompetitionMapper;
 import com.test.footballapi.data.model.mapper.AllMatchesForParticularCompetitionMapper;
+import com.test.footballapi.data.model.mapper.CompetitionInfoMapper;
 import com.test.footballapi.data.model.mapper.MatchesMapper;
 import com.test.footballapi.data.model.mapper.SeasonsMapper;
 
@@ -30,8 +30,8 @@ public class MappersFactory {
     public <T> T create(Class<T> mapperClass) {
         if (mapperClass.isAssignableFrom(AllMatchesForParticularCompetitionMapper.class)) {
             return (T) new AllMatchesForParticularCompetitionMapper(matchesMapper);
-        } else if (mapperClass.isAssignableFrom(AboutCompetitionMapper.class)) {
-            return (T) new AboutCompetitionMapper(seasonsMapper);
+        } else if (mapperClass.isAssignableFrom(CompetitionInfoMapper.class)) {
+            return (T) new CompetitionInfoMapper(seasonsMapper);
         }
         throw new IllegalArgumentException("Unknown presenter class: " + mapperClass.getName());
     }

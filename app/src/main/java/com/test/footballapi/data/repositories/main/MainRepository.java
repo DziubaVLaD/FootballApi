@@ -3,7 +3,7 @@ package com.test.footballapi.data.repositories.main;
 import com.test.footballapi.data.model.NetworkEvent;
 import com.test.footballapi.data.model.client.AllMatchesForParticularCompetition;
 import com.test.footballapi.data.model.client.CompetitionInfo;
-import com.test.footballapi.data.model.client.Team;
+import com.test.footballapi.data.model.client.TeamInfo;
 
 import java.util.List;
 
@@ -15,11 +15,11 @@ public interface MainRepository {
 
     Flowable<NetworkEvent> subscribeOnNetworkEvents();
 
-    Single<AllMatchesForParticularCompetition> getBestTeam(String startDateCompetition, String endDateCompetition, int idCompetition);
+    Single<AllMatchesForParticularCompetition> getAllMatchesForParticularCompetition(String startDateCompetition, String endDateCompetition, int idCompetition);
 
-    Single<Team> getInfoAboutBestTeam(List<Integer> idBestTeamsList);
+    Single<TeamInfo> getBestTeamInfo(List<Integer> idBestTeamsList);
 
-    Single<CompetitionInfo> getInfoAboutCompetition();
+    Single<CompetitionInfo> getCompetitionInfo();
 
     void registerNetworkCallback();
 

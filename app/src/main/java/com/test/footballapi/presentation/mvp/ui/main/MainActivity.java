@@ -1,5 +1,6 @@
 package com.test.footballapi.presentation.mvp.ui.main;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -22,6 +23,7 @@ import com.test.footballapi.utils.OrientationUtils;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+@SuppressLint("NonConstantResourceId")
 public class MainActivity extends BaseMvpActivity<MainPresenter> implements MainView, View.OnClickListener {
 
     @BindView(R.id.tvCompetitionNameAndDates)

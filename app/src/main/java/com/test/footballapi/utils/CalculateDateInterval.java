@@ -7,6 +7,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 import java.util.Objects;
 
 public class CalculateDateInterval {
@@ -33,7 +34,7 @@ public class CalculateDateInterval {
 
     private static String convertDateToString(Date date) {
         String pattern = "yyyy-MM-dd";
-        DateFormat df = new SimpleDateFormat(pattern);
+        DateFormat df = new SimpleDateFormat(pattern, Locale.getDefault());
         return df.format(date);
     }
 }

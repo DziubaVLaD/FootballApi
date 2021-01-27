@@ -17,7 +17,7 @@ import retrofit2.converter.jackson.JacksonConverterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 public class ApiConfig {
-    public static final String ENDPOINT = "http://api.football-data.org/v2/";
+    public static final String ENDPOINT = "https://api.football-data.org/v2/";
     private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
     private static final long DEFAULT_CONNECT_TIMEOUT = 10000;
     private static final long DEFAULT_WRITE_TIMEOUT = 10000;

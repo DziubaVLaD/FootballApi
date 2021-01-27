@@ -4,6 +4,7 @@ import com.test.footballapi.data.model.mapper.AllMatchesForParticularCompetition
 import com.test.footballapi.data.model.mapper.CompetitionInfoMapper;
 import com.test.footballapi.data.model.mapper.MatchesMapper;
 import com.test.footballapi.data.model.mapper.SeasonsMapper;
+import com.test.footballapi.presentation.base.BaseMapper;
 
 public class MappersFactory {
     private final MatchesMapper matchesMapper;
@@ -27,7 +28,8 @@ public class MappersFactory {
         return INSTANCE;
     }
 
-    public <T> T create(Class<T> mapperClass) {
+    @SuppressWarnings("unchecked")
+    public <T extends BaseMapper> T create(Class<T> mapperClass) {
         if (mapperClass.isAssignableFrom(AllMatchesForParticularCompetitionMapper.class)) {
             return (T) new AllMatchesForParticularCompetitionMapper(matchesMapper);
         } else if (mapperClass.isAssignableFrom(CompetitionInfoMapper.class)) {

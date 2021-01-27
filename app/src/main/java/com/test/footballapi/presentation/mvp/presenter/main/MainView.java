@@ -20,4 +20,8 @@ public interface MainView extends MvpView {
                                String tla, String email);
 
     void showCrestUrl(String crestUrl);
+
+    void lockOrientationScreen();
+
+    void unLockOrientationScreen();
 }

@@ -17,6 +17,7 @@ import com.test.footballapi.R;
 import com.test.footballapi.presentation.base.BaseMvpActivity;
 import com.test.footballapi.presentation.mvp.presenter.main.MainPresenter;
 import com.test.footballapi.presentation.mvp.presenter.main.MainView;
+import com.test.footballapi.utils.OrientationUtils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -72,8 +73,10 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+//        OrientationUtils.lockOrientation(MainActivity.this);
         ButterKnife.bind(this);
         presenter.onCreate();
+        hideAllViews();
         if (savedInstanceState == null) {
             presenter.onStart();
         }
@@ -202,13 +205,27 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
         if (crestUrlTeam != null) {
             GlideToVectorYou.justLoadImageAsBackground(this, Uri.parse(crestUrlTeam), ivBestTeamLogo);
         }
-        showAllViews();
+        if (bestTeam == null || crestUrlTeam == null || competitionNameTeam == null || startDateCalculate == null || endDateCalculate == null) {
+            hideAllViews();
+        } else {
+            showAllViews();
+        }
     }
 
     @Override
     public void showCrestUrl(String crestUrl) {
         crestUrlTeam = crestUrl;
         GlideToVectorYou.justLoadImageAsBackground(this, Uri.parse(crestUrl), ivBestTeamLogo);
+    }
+
+    @Override
+    public void lockOrientationScreen() {
+        OrientationUtils.lockOrientation(MainActivity.this);
+    }
+
+    @Override
+    public void unLockOrientationScreen() {
+        OrientationUtils.unlockOrientation(MainActivity.this);
     }
 
     @Override
@@ -222,6 +239,10 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
 
     private void showAllViews() {
         groupInfoCompetitionAndBestTeam.setVisibility(View.VISIBLE);
+    }
+
+    private void hideAllViews() {
+        groupInfoCompetitionAndBestTeam.setVisibility(View.INVISIBLE);
     }
 
     @Override

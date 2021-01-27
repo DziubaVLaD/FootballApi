@@ -45,45 +45,54 @@ public class MainPresenter extends BasePresenter<MainView> {
 
     public void getBestTeam() {
         addDisposable(mainInteractor.getBestTeam()
-                .doOnSubscribe(it -> sendToView(MainView::showProgress))
+                .doOnSubscribe(it -> {
+                    sendToView(MainView::lockOrientationScreen);
+                })
                 .doOnSuccess(allMatchesForParticularCompetition -> {
                 })
                 .subscribe(allMatchesForParticularCompetition -> {
                     getInfoAboutBestTeam();
-                    sendToView(MainView::hideProgress);
                 }, e -> {
                     sendToView(view -> view.showError(e.getMessage()));
                     sendToView(MainView::hideProgress);
+                    sendToView(MainView::unLockOrientationScreen);
                 }));
     }
 
     public void getInfoAboutBestTeam() {
         addDisposable(mainInteractor.getInfoAboutBestTeam()
-                .doOnSubscribe(it -> sendToView(MainView::showProgress))
+                .doOnSubscribe(it -> {
+                    sendToView(MainView::lockOrientationScreen);
+                })
                 .subscribe(team -> {
                     sendToView(view -> view.showInfoAboutBestTeam(team.getName(), team.getFounded(),
                             team.getVenue(), team.getWebsite(), team.getAddress(), team.getClubColors(),
                             team.getPhone(), team.getShortName(), team.getTla(), team.getEmail()));
                     sendToView(view -> view.showCrestUrl(team.getCrestUrl()));
                     sendToView(MainView::hideProgress);
+                    sendToView(MainView::unLockOrientationScreen);
                 }, e -> {
                     sendToView(view -> view.showError(e.getMessage()));
                     sendToView(MainView::hideProgress);
+                    sendToView(MainView::unLockOrientationScreen);
                 }));
     }
 
     public void getInfoAboutCompetition() {
         addDisposable(mainInteractor.getInfoAboutCompetition()
-                .doOnSubscribe(it -> sendToView(MainView::showProgress))
+                .doOnSubscribe(it -> {
+                    sendToView(MainView::lockOrientationScreen);
+                    sendToView(MainView::showProgress);
+                })
                 .doOnSuccess(competitionInfo -> {
                     getBestTeam();
                 })
                 .subscribe(competitionInfo -> {
                     sendToView(view -> view.showCompetitionNameAndDates(competitionInfo.getName(), mainInteractor.getStartDate(), mainInteractor.getEndDate()));
-                    sendToView(MainView::hideProgress);
                 }, e -> {
                     sendToView(view -> view.showError(e.getMessage()));
                     sendToView(MainView::hideProgress);
+                    sendToView(MainView::unLockOrientationScreen);
                 }))
         ;
     }

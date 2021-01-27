@@ -25,8 +25,8 @@ public class MatchesMapper {
 
     private Matches transform(MatchesResponse matchesResponse) {
         Matches matches = new Matches();
-        matches.setWinneAwayTeam(teamNameMapper.transform(matchesResponse.getAwayTeam()));
-        matches.setWinnerHomeTeam(teamNameMapper.transform(matchesResponse.getHomeTeam()));
+        matches.setAwayTeamName(teamNameMapper.transform(matchesResponse.getAwayTeam()));
+        matches.setHomeTeamName(teamNameMapper.transform(matchesResponse.getHomeTeam()));
         matches.setScore(scoreMapper.transform(matchesResponse.getScore()));
         return matches;
     }

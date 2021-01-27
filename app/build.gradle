@@ -51,7 +51,6 @@ dependencies {
     }
     //GlideVector
     implementation 'com.github.corouteam:GlideToVectorYou:v2.0.0'
-
     annotationProcessor "com.github.bumptech.glide:compiler:$glide_version"
     //OkHttp logger
     implementation 'com.squareup.okhttp3:logging-interceptor:4.2.1'

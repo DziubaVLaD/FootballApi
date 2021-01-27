@@ -110,8 +110,8 @@ public class TestMappers {
     private void getMatches() {
         matches = new Matches();
         matches.setScore(score);
-        matches.setWinnerHomeTeam(homeTeamName);
-        matches.setWinneAwayTeam(awayTeamName);
+        matches.setHomeTeamName(homeTeamName);
+        matches.setAwayTeamName(awayTeamName);
     }
 
     private void getMatchesListResponse() {

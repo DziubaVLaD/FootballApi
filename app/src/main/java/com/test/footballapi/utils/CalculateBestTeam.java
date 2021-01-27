@@ -15,9 +15,9 @@ public class CalculateBestTeam {
     public static void calculateWinnerTeam(Matches matches) {
         if (matches.getScore().getWinner() != null) {
             if (matches.getScore().getWinner().equals(HOME_TEAM)) {
-                addWinnerTeam(matches.getWinnerHomeTeam().getId());
+                addWinnerTeam(matches.getHomeTeamName().getId());
             } else if (matches.getScore().getWinner().equals(AWAY_TEAM)) {
-                addWinnerTeam(matches.getWinnerAwayTeam().getId());
+                addWinnerTeam(matches.getAwayTeamName().getId());
             }
         }
     }

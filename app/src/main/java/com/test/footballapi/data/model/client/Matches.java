@@ -15,19 +15,19 @@ public class Matches {
         this.score = score;
     }
 
-    public TeamName getWinnerHomeTeam() {
+    public TeamName getHomeTeamName() {
         return homeTeam;
     }
 
-    public void setWinnerHomeTeam(TeamName teamName) {
+    public void setHomeTeamName(TeamName teamName) {
         this.homeTeam = teamName;
     }
 
-    public TeamName getWinnerAwayTeam() {
+    public TeamName getAwayTeamName() {
         return awayTeam;
     }
 
-    public void setWinneAwayTeam(TeamName awayTeam) {
+    public void setAwayTeamName(TeamName awayTeam) {
         this.awayTeam = awayTeam;
     }
 

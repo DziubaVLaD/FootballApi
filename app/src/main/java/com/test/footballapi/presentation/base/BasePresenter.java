@@ -8,9 +8,9 @@ import io.reactivex.disposables.Disposable;
 public class BasePresenter<T extends MvpView> implements Presenter<T> {
 
     private T mvpView;
-    private LinkedBlockingQueue<ViewAction<T>> postponedViewActions;
+    private final LinkedBlockingQueue<ViewAction<T>> postponedViewActions;
 
-    private CompositeDisposable disposables;
+    private final CompositeDisposable disposables;
 
     public BasePresenter() {
         disposables = new CompositeDisposable();

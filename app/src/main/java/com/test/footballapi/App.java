@@ -28,8 +28,6 @@ public class App extends Application {
     private BestTeamMapper bestTeamMapper;
     private CompetitionInfoMapper competitionInfoMapper;
     private MatchesMapper matchesMapper;
-    private TeamNameMapper teamNameMapper;
-    private ScoreMapper scoreMapper;
     private SeasonsMapper seasonsMapper;
 
     @Override
@@ -62,8 +60,8 @@ public class App extends Application {
         });
 
         bestTeamMapper = new BestTeamMapper();
-        teamNameMapper = new TeamNameMapper();
-        scoreMapper = new ScoreMapper();
+        TeamNameMapper teamNameMapper = new TeamNameMapper();
+        ScoreMapper scoreMapper = new ScoreMapper();
         seasonsMapper = new SeasonsMapper();
         matchesMapper = new MatchesMapper(teamNameMapper, scoreMapper);
         competitionInfoMapper = new CompetitionInfoMapper(seasonsMapper);

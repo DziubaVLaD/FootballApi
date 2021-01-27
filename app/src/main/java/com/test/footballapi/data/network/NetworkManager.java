@@ -11,6 +11,8 @@ import android.util.Log;
 
 import com.test.footballapi.data.model.NetworkEvent;
 
+import org.jetbrains.annotations.NotNull;
+
 import io.reactivex.Flowable;
 import io.reactivex.processors.PublishProcessor;
 
@@ -19,12 +21,12 @@ public class NetworkManager {
     private static final String TAG = NetworkManager.class.getSimpleName();
 
     private boolean isConnected;
-    private Context context;
-    private PublishProcessor<NetworkEvent> networkEventPublishProcessor = PublishProcessor.create();
+    private final Context context;
+    private final PublishProcessor<NetworkEvent> networkEventPublishProcessor = PublishProcessor.create();
 
-    private ConnectivityManager.NetworkCallback networkCallback = new ConnectivityManager.NetworkCallback() {
+    private final ConnectivityManager.NetworkCallback networkCallback = new ConnectivityManager.NetworkCallback() {
         @Override
-        public void onAvailable(Network network) {
+        public void onAvailable(@NotNull Network network) {
             super.onAvailable(network);
             boolean isConnected = isNetworkConnected();
             if (NetworkManager.this.isConnected != isConnected) {
@@ -37,7 +39,7 @@ public class NetworkManager {
         }
 
         @Override
-        public void onLost(Network network) {
+        public void onLost(@NotNull Network network) {
             super.onLost(network);
             boolean isConnected = isNetworkConnected();
             if (NetworkManager.this.isConnected != isConnected) {
@@ -64,7 +66,7 @@ public class NetworkManager {
         ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         try {
             connectivityManager.unregisterNetworkCallback(networkCallback);
-        } catch (IllegalArgumentException ex) {
+        } catch (IllegalArgumentException ignored) {
         }
     }
 

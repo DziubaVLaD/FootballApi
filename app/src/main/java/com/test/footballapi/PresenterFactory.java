@@ -1,7 +1,5 @@
 package com.test.footballapi;
 
-import android.annotation.SuppressLint;
-
 import com.test.footballapi.data.DataManager;
 import com.test.footballapi.data.model.mapper.AllMatchesForParticularCompetitionMapper;
 import com.test.footballapi.data.model.mapper.BestTeamMapper;
@@ -12,7 +10,6 @@ import com.test.footballapi.presentation.base.BasePresenter;
 import com.test.footballapi.presentation.mvp.presenter.main.MainPresenter;
 
 public class PresenterFactory {
-    @SuppressLint("StaticFieldLeak")
     private static volatile PresenterFactory INSTANCE;
     private final DataManager dataManager;
     private final AllMatchesForParticularCompetitionMapper allMatchesForParticularCompetitionMapper;

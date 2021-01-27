@@ -75,7 +75,6 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//        OrientationUtils.lockOrientation(MainActivity.this);
         ButterKnife.bind(this);
         presenter.onCreate();
         hideAllViews();
@@ -232,10 +231,8 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.view_offline_banner:
-                presenter.onOfflineBannerClicked();
-                break;
+        if (view.getId() == R.id.view_offline_banner) {
+            presenter.onOfflineBannerClicked();
         }
     }
 

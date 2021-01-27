@@ -12,8 +12,15 @@ import static org.junit.Assert.assertEquals;
 
 public class TestCalculateDateInterval {
     @Test
-    public void convertDateToString_isCorrect() throws ParseException {
-        Date date = new SimpleDateFormat( "yyyy-MM-dd" ).parse( "2020-12-15" );
-        assertEquals(CalculateDateInterval.convertDateToString(date), "2020-12-15");
+    public void calculateLastDay_isCorrect() throws ParseException {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Date currentDate = new Date();
+        assertEquals("2020-12-15", CalculateDateInterval.calculateLastDay("2020-12-15"));
+        assertEquals(sdf.format(currentDate), CalculateDateInterval.calculateLastDay("2030-12-12"));
+    }
+
+    @Test
+    public void calculateFirstDay_isCorrect() throws ParseException {
+        assertEquals("2020-01-01", CalculateDateInterval.calculateFirstDay("2020-01-31"));
     }
 }

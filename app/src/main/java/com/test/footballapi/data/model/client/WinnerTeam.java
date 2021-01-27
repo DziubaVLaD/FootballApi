@@ -1,5 +1,7 @@
 package com.test.footballapi.data.model.client;
 
+import java.util.Objects;
+
 public class WinnerTeam {
     private int id;
     private String name;
@@ -18,5 +20,14 @@ public class WinnerTeam {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        WinnerTeam that = (WinnerTeam) o;
+        return id == that.id &&
+                Objects.equals(name, that.name);
     }
 }
